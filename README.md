@@ -26,11 +26,11 @@ Premium React/Vite implementation of the five VELOOP Rewards engagement utility 
 
 ## Responsive target matrix
 
-| Viewport category | Banner target |
-| --- | --- |
-| Laptop / Desktop | 438px height, full-width split layout |
-| Tablet | 500–530px height, adaptive split/stacked layout |
-| Mobile | 518–520px height, vertical composition |
+| Viewport category | Banner target                                   |
+| ----------------- | ----------------------------------------------- |
+| Laptop / Desktop  | 438px height, full-width split layout           |
+| Tablet            | 500–530px height, adaptive split/stacked layout |
+| Mobile            | 518–520px height, vertical composition          |
 
 CSS has dedicated behavior around 1099px, 879px, 767px and 360px to protect typography, visual prominence, touch targets and overflow on narrow screens.
 
@@ -88,6 +88,14 @@ npm run preview
 - Visible keyboard focus states
 - `prefers-reduced-motion` support
 
+## Live Demo
+
+https://veloop-rewards-task-0g.vercel.app
+
+## GitHub Repository
+
+https://github.com/yogeshr9530/veloop-rewards-task-0g
+
 ## Deployment
 
 ### Vercel
@@ -107,36 +115,40 @@ This project includes `vercel.json` with an SPA rewrite so React routes do not s
 
 ## Final testing checklist
 
-- [ ] Desktop: 1440px / 1366px
-- [ ] Tablet: 1024px / 768px
-- [ ] Mobile: 430px / 390px / 360px / 320px
-- [ ] No horizontal overflow
-- [ ] No clipped heading, illustration or CTA
-- [ ] All CTA routes work
-- [ ] Copy Email works
-- [ ] Keyboard tab + focus states work
-- [ ] Animations are smooth
-- [ ] Browser console has no errors
-- [ ] `npm run build` completes successfully
-- [ ] GitHub repo is public/accessible as required
-- [ ] Vercel or Netlify live URL works
-
+- [x] Desktop: 1440px / 1366px
+- [x] Tablet: 1024px / 768px
+- [x] Mobile: 430px / 390px / 360px / 320px
+- [x] No horizontal overflow
+- [x] No clipped heading, illustration or CTA
+- [x] All CTA routes work
+- [x] Copy Email works
+- [x] Keyboard tab + focus states work
+- [x] Animations are smooth
+- [x] Browser console has no errors
+- [x] `npm run build` completes successfully
+- [x] GitHub repo is public/accessible as required
+- [x] Vercel or Netlify live URL works
 
 ## Screenshots
 
 ### Leaderboard
+
 ![Leaderboard banner](docs/screenshots/leaderboard.png)
 
 ### Watch Ads & Earn
+
 ![Watch Ads banner](docs/screenshots/watch-ads.png)
 
 ### Contact Us
+
 ![Contact Us banner](docs/screenshots/contact-us.png)
 
 ### Follow & Earn
+
 ![Follow & Earn banner](docs/screenshots/follow-earn.png)
 
 ### Daily Bonus
+
 ![Daily Bonus banner](docs/screenshots/daily-bonus.png)
 
 ## Demo data notice
