@@ -1,0 +1,130 @@
+.page {
+  width: min(1480px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 18px 0 34px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  color: #aeb5c8;
+  font-size: 0.88rem;
+}
+
+.topbar > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.topbar strong {
+  display: block;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+}
+
+.topbar small {
+  display: block;
+  margin-top: 2px;
+  letter-spacing: 0.38em;
+  font-size: 0.57rem;
+  color: #8c94aa;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 11px;
+  background: linear-gradient(145deg, #6d4df0, #2d7be8);
+  color: #fff;
+  font-weight: 900;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.3),
+    0 8px 20px rgba(60, 72, 200, 0.18);
+}
+
+.topbar p {
+  margin: 0;
+  color: #aeb9d8;
+  letter-spacing: .015em;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 10px 0;
+  color: #8a94ad;
+  font-size: 0.78rem;
+}
+
+.footer p {
+  margin: 0;
+  max-width: 760px;
+  line-height: 1.55;
+}
+
+.logoText {
+  flex: 0 0 auto;
+  text-align: right;
+  letter-spacing: 0.12em;
+}
+
+.logoText strong {
+  color: #d8ad49;
+  display: block;
+  font-size: 1.22rem;
+}
+
+.logoText span {
+  display: block;
+  margin-top: -2px;
+  font-size: 0.54rem;
+  letter-spacing: 0.55em;
+  color: #e9edf8;
+}
+
+@media (max-width: 767px) {
+  .page {
+    width: min(100% - 14px, 1480px);
+    padding-top: 8px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    padding-inline: 4px;
+    margin-bottom: 10px;
+  }
+
+  .topbar p {
+    max-width: 150px;
+    text-align: right;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .brandMark { width: 34px; }
+
+  .stack { gap: 10px; }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-inline: 5px;
+  }
+
+  .logoText { text-align: left; }
+}
