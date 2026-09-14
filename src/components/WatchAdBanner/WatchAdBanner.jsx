@@ -16,6 +16,16 @@ export default function WatchAdBanner() {
 
   return (
     <article className={`${styles.banner} ${previewed ? styles.previewed : ''}`} {...motion}>
+      <div className={styles.visual}>
+        <img src={watchVisual} alt="Video reward screen with VE wallet and reward coins" className={styles.visualImage} />
+        <button type="button" className={styles.playHotspot} onClick={previewReward} aria-label="Preview watch and earn interaction">
+          <Play fill="currentColor" aria-hidden="true" />
+        </button>
+        <div className={styles.rewardToast} role="status" aria-live="polite">
+          <Check size={16} aria-hidden="true" /> Reward preview · +38 VEs
+        </div>
+      </div>
+
       <div className={styles.content}>
         <div className={styles.kicker}>
           <span className={styles.index}>02</span>
@@ -40,16 +50,6 @@ export default function WatchAdBanner() {
           Watch &amp; Earn
           <ArrowRight size={19} aria-hidden="true" />
         </Link>
-      </div>
-
-      <div className={styles.visual}>
-        <img src={watchVisual} alt="Video reward screen with VE wallet and reward coins" className={styles.visualImage} />
-        <button type="button" className={styles.playHotspot} onClick={previewReward} aria-label="Preview watch and earn interaction">
-          <Play fill="currentColor" aria-hidden="true" />
-        </button>
-        <div className={styles.rewardToast} role="status" aria-live="polite">
-          <Check size={16} aria-hidden="true" /> Reward preview · +38 VEs
-        </div>
       </div>
     </article>
   )

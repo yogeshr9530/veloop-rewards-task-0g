@@ -14,14 +14,14 @@ React/Vite implementation of the five VELOOP Rewards utility banners, rebuilt to
 
 - App body background remains `#161827`.
 - All banners use `100%` of the available container width.
-- Desktop banner height: `410px` on wide desktop (minimum allowed by the brief), with the existing responsive tablet/mobile ranges preserved.
-- Tablet banner height: `530px`.
-- Mobile banner height: `520px`.
+- Desktop banner height: `450px` (inside the required 410–450px range).
+- Tablet banner height: `540px` (inside the required 380–540px range).
+- Mobile banner height: `520px` (inside the required 330–520px range).
 - Large visual composition is included in every banner.
 - Each banner has meaningful hover/pointer interaction or functional interaction.
 - High-contrast CTA buttons include hover, active and keyboard-focus behavior.
 - Responsive layouts are included for desktop, tablet and mobile.
-- Images use optimized transparent WebP assets instead of heavy video backgrounds.
+- Visuals use transparent PNG/WebP assets with lightweight CSS motion instead of heavy video backgrounds.
 - Copy Email is functional with accessible feedback.
 - Watch & Earn includes an interactive reward preview.
 - `prefers-reduced-motion` is respected.
@@ -44,7 +44,7 @@ The complex 3D illustrations were isolated/recreated as transparent assets so th
 
 ```text
 src/assets/
-├── leaderboard-visual.webp
+├── leaderboard-visual-user.png
 ├── watch-earn-visual.webp
 ├── contact-support-visual.webp
 ├── follow-earn-visual.webp
@@ -110,8 +110,13 @@ npm run preview
 
 `vercel.json`, `netlify.toml`, and `public/_redirects` are included so SPA routes can be refreshed directly after deployment.
 
+## Reviewer feedback update
+
+The latest pass follows the review direction to keep the **visual/image on top and the content below it** across all five banners. The top visual zones use subtle floating/tilt motion, while the lower content zones remain clean, readable and action-focused. These animations are implemented with lightweight CSS keyframes plus the existing pointer-parallax variables, so no heavy runtime animation library is required.
+
 ## Interaction details
 
+- Top-first visual composition on every banner, with content placed below.
 - Pointer-based parallax and focal glow movement on the main illustrations.
 - Leaderboard sparkle motion and responsive trophy/podium composition.
 - Watch-ad play hotspot with temporary `+38 VEs` reward-preview feedback.
@@ -158,5 +163,5 @@ Ranking values, prize amounts, campaign rewards, daily rewards and streak inform
 
 Yogesh Rathor
 
-## Final reference-match pass
-The final UI is tuned against the supplied Task 0G reference artwork: denser desktop typography, single-line desktop Watch Ads and Contact headings, widened hero compositions, premium theme-specific visuals, responsive height constraints, focus states, and lightweight pointer/hover interactions.
+## Final reviewer pass
+The current UI preserves the supplied premium Task 0G visual language while applying the latest reviewer instruction: each feature now presents its animated visual first and its heading, explanation, supporting value and CTA beneath it. Motion remains subtle and professional to keep the fintech/rewards experience polished rather than game-like.

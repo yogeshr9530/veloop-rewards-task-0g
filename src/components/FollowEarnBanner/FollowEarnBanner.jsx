@@ -9,6 +9,22 @@ export default function FollowEarnBanner() {
 
   return (
     <article className={styles.banner} {...motion}>
+      <div className={styles.visual}>
+        <div className={styles.phoneWrap}>
+          <img src={followVisual} alt="VELOOP Rewards social profile on a phone with social engagement icons" className={styles.phoneImage} />
+        </div>
+
+        <aside className={styles.rewardCard} aria-label="Eligible social campaign reward example">
+          <div className={styles.rewardIntro}>
+            <span className={styles.giftIcon}><Gift size={24} aria-hidden="true" /></span>
+            <p>Participate in eligible social campaigns and unlock rewards.</p>
+          </div>
+          <span className={styles.divider} />
+          <strong>+500 SVEs</strong>
+          <small>Demo Campaign</small>
+        </aside>
+      </div>
+
       <div className={styles.content}>
         <div className={styles.kicker}>
           <span className={styles.index}>04</span>
@@ -26,22 +42,6 @@ export default function FollowEarnBanner() {
           Explore Our Channels
           <ArrowRight size={19} aria-hidden="true" />
         </Link>
-      </div>
-
-      <div className={styles.visual}>
-        <div className={styles.phoneWrap}>
-          <img src={followVisual} alt="VELOOP Rewards social profile on a phone with social engagement icons" className={styles.phoneImage} />
-        </div>
-
-        <aside className={styles.rewardCard} aria-label="Eligible social campaign reward example">
-          <div className={styles.rewardIntro}>
-            <span className={styles.giftIcon}><Gift size={24} aria-hidden="true" /></span>
-            <p>Participate in eligible social campaigns and unlock rewards.</p>
-          </div>
-          <span className={styles.divider} />
-          <strong>+500 SVEs</strong>
-          <small>Demo Campaign</small>
-        </aside>
       </div>
     </article>
   )

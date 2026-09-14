@@ -13,6 +13,11 @@ export default function LeaderboardBanner() {
         <i /><i /><i /><i /><i />
       </div>
 
+      <div className={styles.visual} aria-hidden="true">
+        <span className={styles.halo} />
+        <img src={leaderboardVisual} alt="" className={styles.visualImage} />
+      </div>
+
       <div className={styles.content}>
         <div className={styles.kicker}>
           <span className={styles.index}>01</span>
@@ -43,11 +48,6 @@ export default function LeaderboardBanner() {
           Check Rankings
           <ArrowRight size={19} aria-hidden="true" />
         </Link>
-      </div>
-
-      <div className={styles.visual} aria-hidden="true">
-        <span className={styles.halo} />
-        <img src={leaderboardVisual} alt="" className={styles.visualImage} />
       </div>
     </article>
   )

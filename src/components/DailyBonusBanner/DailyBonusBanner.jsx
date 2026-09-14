@@ -10,25 +10,6 @@ export default function DailyBonusBanner() {
 
   return (
     <article className={styles.banner} {...motion}>
-      <div className={styles.content}>
-        <div className={styles.kicker}>
-          <span className={styles.index}>05</span>
-          <span className={styles.stage}>DAILY BONUS</span>
-        </div>
-
-        <h2>
-          Your Daily Bonus
-          <span>Is Waiting</span>
-        </h2>
-
-        <p>Check in regularly and claim your available daily bonus before the opportunity resets.</p>
-
-        <Link to="/daily-bonus" className={styles.cta}>
-          Claim Bonus
-          <Gift size={19} aria-hidden="true" />
-        </Link>
-      </div>
-
       <div className={styles.visual}>
         <div className={styles.giftWrap}>
           <img src={dailyVisual} alt="Glowing reward gift box with VE coins" className={styles.giftImage} />
@@ -55,6 +36,25 @@ export default function DailyBonusBanner() {
           <strong>6 Days Completed</strong>
           <p>Come back tomorrow!</p>
         </aside>
+      </div>
+
+      <div className={styles.content}>
+        <div className={styles.kicker}>
+          <span className={styles.index}>05</span>
+          <span className={styles.stage}>DAILY BONUS</span>
+        </div>
+
+        <h2>
+          Your Daily Bonus
+          <span>Is Waiting</span>
+        </h2>
+
+        <p>Check in regularly and claim your available daily bonus before the opportunity resets.</p>
+
+        <Link to="/daily-bonus" className={styles.cta}>
+          Claim Bonus
+          <Gift size={19} aria-hidden="true" />
+        </Link>
       </div>
     </article>
   )
