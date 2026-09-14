@@ -1,54 +1,74 @@
 # VELOOP Rewards – Task 0G
 
-Premium React/Vite implementation of the five VELOOP Rewards engagement utility banners from the assigned frontend task.
+React/Vite implementation of the five VELOOP Rewards utility banners, rebuilt to closely match the supplied premium dark fintech/rewards reference UI while keeping the components responsive, accessible, interactive, and reusable.
 
-## Included banners
+## Banners implemented
 
-1. Leaderboard — competition, podium, trophy, rank cards and prize pool
-2. Watch Ads & Earn — video player, VE wallet, reward coins and CTA
-3. Contact Us — support agent, email copy interaction, help center and ticket links
-4. Follow & Earn — social profile phone, channel icons and eligible campaign reward card
-5. Daily Bonus — reward gift, available bonus card and seven-day streak
+1. **Leaderboard** — competition stage label, prize pool, ranking CTA, 3D trophy/podium visual, gold/blue/bronze lighting and motion.
+2. **Watch Ads & Earn** — eligible-ad messaging, benefit chips, video/wallet/VE visual, interactive play hotspot and reward-preview feedback.
+3. **Contact Us** — support CTA, 3D support-agent visual, real support email, copy-email interaction, help-center and ticket actions.
+4. **Follow & Earn** — official-channel messaging, social-profile visual, eligible-campaign wording and demo reward card.
+5. **Daily Bonus** — claim CTA, 3D gift/VE visual, current bonus card and seven-day streak UI.
 
-## Design requirements implemented
+## Assignment requirements covered
 
-- Application body background: `#161827`
-- 100% available-width banners
-- Premium dark fintech/rewards visual language
-- Distinct theme for every feature
-- Large visual composition in every banner
-- Purposeful lightweight animations
-- High-contrast CTAs with hover, active and keyboard focus states
-- Responsive layouts for desktop, tablet and mobile
-- Touch-friendly actions (44px minimum on mobile where interactive)
-- Reduced-motion accessibility support
-- Dummy development reward data only
+- App body background remains `#161827`.
+- All banners use `100%` of the available container width.
+- Desktop banner height: `410px` on wide desktop (minimum allowed by the brief), with the existing responsive tablet/mobile ranges preserved.
+- Tablet banner height: `530px`.
+- Mobile banner height: `520px`.
+- Large visual composition is included in every banner.
+- Each banner has meaningful hover/pointer interaction or functional interaction.
+- High-contrast CTA buttons include hover, active and keyboard-focus behavior.
+- Responsive layouts are included for desktop, tablet and mobile.
+- Images use optimized transparent WebP assets instead of heavy video backgrounds.
+- Copy Email is functional with accessible feedback.
+- Watch & Earn includes an interactive reward preview.
+- `prefers-reduced-motion` is respected.
+- Dummy reward/ranking/streak values remain clearly development-only.
 
-## Responsive target matrix
+## Reference design
 
-| Viewport category | Banner target                                   |
-| ----------------- | ----------------------------------------------- |
-| Laptop / Desktop  | 438px height, full-width split layout           |
-| Tablet            | 500–530px height, adaptive split/stacked layout |
-| Mobile            | 518–520px height, vertical composition          |
+The supplied target UI is stored in `docs/reference/` for implementation comparison:
 
-CSS has dedicated behavior around 1099px, 879px, 767px and 360px to protect typography, visual prominence, touch targets and overflow on narrow screens.
+- `docs/reference/exact-ui-top.png`
+- `docs/reference/exact-ui-bottom.png`
+
+![Reference UI – top banners](docs/reference/exact-ui-top.png)
+
+![Reference UI – remaining banners](docs/reference/exact-ui-bottom.png)
+
+## Visual assets
+
+The complex 3D illustrations were isolated/recreated as transparent assets so the surrounding banner remains real React/CSS UI:
+
+```text
+src/assets/
+├── leaderboard-visual.webp
+├── watch-earn-visual.webp
+├── contact-support-visual.webp
+├── follow-earn-visual.webp
+└── daily-bonus-visual.webp
+```
+
+This keeps text, CTAs, support information, reward cards and responsive behavior editable rather than flattening the entire banner into a screenshot.
 
 ## Tech stack
 
-- React.js
-- Vite
+- React.js 19
+- Vite 7
+- React Router DOM
 - Bootstrap
 - CSS Modules
 - React Hooks
 - Lucide React
 - React Icons
-- React Router DOM
 
-## Folder structure
+## Project structure
 
 ```text
 src/
+├── assets/
 ├── components/
 │   ├── LeaderboardBanner/
 │   ├── WatchAdBanner/
@@ -57,18 +77,20 @@ src/
 │   ├── DailyBonusBanner/
 │   └── FeaturePage/
 ├── data/
+├── hooks/
+│   └── usePointerParallax.js
 ├── pages/
 └── styles/
 ```
 
 ## Installation
 
+Do not copy an existing `node_modules` folder between operating systems. Install dependencies fresh on the machine where the project will run:
+
 ```bash
 npm install
 npm run dev
 ```
-
-Open the Vite local URL shown in the terminal.
 
 ## Production build
 
@@ -77,84 +99,64 @@ npm run build
 npm run preview
 ```
 
-## Interactions
+## Routes
 
-- Animated trophy / floating leaderboard composition
-- Video player float and VE coin movement
-- Working support email copy button with feedback state
-- Floating social icons and profile-phone motion
-- Gift and sparkle animation for daily rewards
-- CTA navigation to dedicated routes
-- Visible keyboard focus states
-- `prefers-reduced-motion` support
+- `/` — all five banners
+- `/leaderboard`
+- `/watch-earn`
+- `/contact`
+- `/follow-earn`
+- `/daily-bonus`
 
-## Live Demo
+`vercel.json`, `netlify.toml`, and `public/_redirects` are included so SPA routes can be refreshed directly after deployment.
 
-https://veloop-rewards-task-0g.vercel.app
+## Interaction details
 
-## GitHub Repository
-
-https://github.com/yogeshr9530/veloop-rewards-task-0g
+- Pointer-based parallax and focal glow movement on the main illustrations.
+- Leaderboard sparkle motion and responsive trophy/podium composition.
+- Watch-ad play hotspot with temporary `+38 VEs` reward-preview feedback.
+- Working support email copy action with `Copied!` state.
+- Social-phone composition with interactive CTA and live HTML reward card.
+- Daily gift composition with live HTML bonus and streak panels.
+- Global focus-visible and reduced-motion support.
 
 ## Deployment
 
-### Vercel
+Existing repository: `https://github.com/yogeshr9530/veloop-rewards-task-0g`
 
-This project includes `vercel.json` with an SPA rewrite so React routes do not show a 404 when opened or refreshed directly.
+Existing Vercel project: `https://veloop-rewards-task-0g.vercel.app`
 
-1. Push the project to GitHub.
-2. Import the repository into Vercel.
-3. Framework preset: Vite.
-4. Build command: `npm run build`.
-5. Output directory: `dist`.
-6. Deploy and verify `/leaderboard`, `/watch-earn`, `/contact`, `/follow-earn` and `/daily-bonus`.
+After pushing this updated source, trigger a fresh Vercel deployment so the live URL reflects the redesigned UI.
 
-### Netlify
+## Submission checklist
 
-`netlify.toml` and `public/_redirects` are included for SPA routing.
-
-## Final testing checklist
-
-- [x] Desktop: 1440px / 1366px
-- [x] Tablet: 1024px / 768px
-- [x] Mobile: 430px / 390px / 360px / 320px
-- [x] No horizontal overflow
-- [x] No clipped heading, illustration or CTA
-- [x] All CTA routes work
-- [x] Copy Email works
-- [x] Keyboard tab + focus states work
-- [x] Animations are smooth
-- [x] Browser console has no errors
-- [x] `npm run build` completes successfully
-- [x] GitHub repo is public/accessible as required
-- [x] Vercel or Netlify live URL works
-
-## Screenshots
-
-### Leaderboard
-
-![Leaderboard banner](docs/screenshots/leaderboard.png)
-
-### Watch Ads & Earn
-
-![Watch Ads banner](docs/screenshots/watch-ads.png)
-
-### Contact Us
-
-![Contact Us banner](docs/screenshots/contact-us.png)
-
-### Follow & Earn
-
-![Follow & Earn banner](docs/screenshots/follow-earn.png)
-
-### Daily Bonus
-
-![Daily Bonus banner](docs/screenshots/daily-bonus.png)
+- [x] Leaderboard banner redesigned
+- [x] Watch Ads & Earn banner redesigned
+- [x] Contact Us banner redesigned
+- [x] Follow & Earn banner redesigned
+- [x] Daily Bonus banner redesigned
+- [x] Full-width responsive banners
+- [x] Required height ranges implemented
+- [x] `#161827` application background retained
+- [x] Large illustration in each banner
+- [x] Meaningful interactions/animations
+- [x] Premium fintech/rewards visual direction
+- [x] Mobile/tablet/desktop CSS breakpoints
+- [x] Accessible focus states and labels
+- [x] Optimized transparent visual assets
+- [x] SPA deployment configuration
+- [x] Professional README
+- [ ] Push the updated source to GitHub
+- [ ] Redeploy the updated source to Vercel/Netlify
+- [ ] Capture fresh implementation screenshots after deployment
 
 ## Demo data notice
 
-Leaderboard values, reward amounts and streak information are development placeholders. Replace them only with approved production rules/data when backend integration becomes available.
+Ranking values, prize amounts, campaign rewards, daily rewards and streak information are development placeholders only. Replace them with approved production rules/data when backend integration is available.
 
 ## Author
 
 Yogesh Rathor
+
+## Final reference-match pass
+The final UI is tuned against the supplied Task 0G reference artwork: denser desktop typography, single-line desktop Watch Ads and Contact headings, widened hero compositions, premium theme-specific visuals, responsive height constraints, focus states, and lightweight pointer/hover interactions.

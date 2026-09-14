@@ -1,15 +1,19 @@
-import { ArrowRight, Check, Gift, Sparkles } from 'lucide-react'
+import { Check, Gift } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import usePointerParallax from '../../hooks/usePointerParallax'
 import { streakDays } from '../../data/rewards'
+import dailyVisual from '../../assets/daily-bonus-visual.webp'
 import styles from './DailyBonusBanner.module.css'
 
 export default function DailyBonusBanner() {
+  const motion = usePointerParallax()
+
   return (
-    <article className={styles.banner}>
+    <article className={styles.banner} {...motion}>
       <div className={styles.content}>
         <div className={styles.kicker}>
-          <span>05</span>
-          DAILY BONUS
+          <span className={styles.index}>05</span>
+          <span className={styles.stage}>DAILY BONUS</span>
         </div>
 
         <h2>
@@ -17,51 +21,40 @@ export default function DailyBonusBanner() {
           <span>Is Waiting</span>
         </h2>
 
-        <p>
-          Check in regularly and claim your available daily bonus before the
-          opportunity resets.
-        </p>
+        <p>Check in regularly and claim your available daily bonus before the opportunity resets.</p>
 
         <Link to="/daily-bonus" className={styles.cta}>
           Claim Bonus
-          <Gift size={18} />
+          <Gift size={19} aria-hidden="true" />
         </Link>
       </div>
 
-      <div className={styles.visual} role="img" aria-label="Daily reward gift, today bonus and seven-day streak illustration">
-        <div className={styles.giftScene}>
-          <Sparkles className={styles.sparkleA} />
-          <Sparkles className={styles.sparkleB} />
-          <div className={styles.bow}>✦</div>
-          <div className={styles.lid} />
-          <div className={styles.box}>
-            <span>VE</span>
-          </div>
-          <div className={`${styles.coin} ${styles.coinA}`}>VE</div>
-          <div className={`${styles.coin} ${styles.coinB}`}>VE</div>
+      <div className={styles.visual}>
+        <div className={styles.giftWrap}>
+          <img src={dailyVisual} alt="Glowing reward gift box with VE coins" className={styles.giftImage} />
         </div>
 
-        <div className={styles.todayCard}>
+        <aside className={styles.todayCard} aria-label="Today's bonus example">
           <small>TODAY’S BONUS</small>
           <strong>+25 GEMS</strong>
-          <span>Available Now <i /></span>
-        </div>
+          <span>Available Now <i aria-hidden="true" /></span>
+        </aside>
 
-        <div className={styles.streak}>
+        <aside className={styles.streak} aria-label="Seven-day reward streak example">
           <small>7-DAY STREAK</small>
           <div className={styles.days}>
             {streakDays.map(({ day, done }) => (
               <div key={day}>
                 <b>{day}</b>
                 <span className={done ? styles.done : ''}>
-                  {done ? <Check size={13} /> : day}
+                  {done ? <Check size={14} aria-hidden="true" /> : day}
                 </span>
               </div>
             ))}
           </div>
           <strong>6 Days Completed</strong>
           <p>Come back tomorrow!</p>
-        </div>
+        </aside>
       </div>
     </article>
   )

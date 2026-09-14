@@ -1,59 +1,7 @@
 .page {
-  width: min(1480px, calc(100% - 24px));
+  width: min(1520px, calc(100% - 28px));
   margin: 0 auto;
-  padding: 18px 0 34px;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 16px;
-  padding: 0 8px;
-  color: #aeb5c8;
-  font-size: 0.88rem;
-}
-
-.topbar > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-}
-
-.topbar strong {
-  display: block;
-  letter-spacing: 0.14em;
-  line-height: 1.1;
-}
-
-.topbar small {
-  display: block;
-  margin-top: 2px;
-  letter-spacing: 0.38em;
-  font-size: 0.57rem;
-  color: #8c94aa;
-}
-
-.brandMark {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  aspect-ratio: 1;
-  border-radius: 11px;
-  background: linear-gradient(145deg, #6d4df0, #2d7be8);
-  color: #fff;
-  font-weight: 900;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.3),
-    0 8px 20px rgba(60, 72, 200, 0.18);
-}
-
-.topbar p {
-  margin: 0;
-  color: #aeb9d8;
-  letter-spacing: .015em;
+  padding: 14px 0 28px;
 }
 
 .stack {
@@ -65,66 +13,76 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 18px 10px 0;
-  color: #8a94ad;
-  font-size: 0.78rem;
+  gap: 28px;
+  padding: 18px 18px 0;
+  color: #9aa3b7;
 }
 
-.footer p {
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.notice svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #d8deeb;
+}
+
+.notice p {
+  max-width: 800px;
   margin: 0;
-  max-width: 760px;
+  font-size: .75rem;
   line-height: 1.55;
 }
 
 .logoText {
   flex: 0 0 auto;
-  text-align: right;
-  letter-spacing: 0.12em;
+  text-align: center;
 }
 
 .logoText strong {
-  color: #d8ad49;
   display: block;
-  font-size: 1.22rem;
+  color: #7c5cff;
+  font-size: 1.55rem;
+  line-height: 1;
+  letter-spacing: .06em;
+  font-weight: 900;
 }
 
-.logoText span {
+.logoText strong span { color: #f0ad33; }
+
+.logoText small {
   display: block;
-  margin-top: -2px;
-  font-size: 0.54rem;
-  letter-spacing: 0.55em;
-  color: #e9edf8;
+  margin-top: 5px;
+  padding-left: .38em;
+  color: #d9deea;
+  font-size: .55rem;
+  letter-spacing: .56em;
 }
 
 @media (max-width: 767px) {
   .page {
-    width: min(100% - 14px, 1480px);
-    padding-top: 8px;
+    width: min(100% - 12px, 1520px);
+    padding-top: 6px;
   }
-
-  .topbar {
-    align-items: flex-start;
-    padding-inline: 4px;
-    margin-bottom: 10px;
-  }
-
-  .topbar p {
-    max-width: 150px;
-    text-align: right;
-    font-size: 0.72rem;
-    line-height: 1.35;
-  }
-
-  .brandMark { width: 34px; }
 
   .stack { gap: 10px; }
 
   .footer {
     align-items: flex-start;
     flex-direction: column;
-    padding-inline: 5px;
+    gap: 14px;
+    padding: 15px 8px 4px;
   }
 
-  .logoText { text-align: left; }
+  .notice p { font-size: .67rem; }
+  .logoText { align-self: flex-end; }
+}
+
+@media (min-width: 1101px) {
+  .stack { gap: 12px; }
+  .footer { padding-top: 14px; }
 }

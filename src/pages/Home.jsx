@@ -1,3 +1,4 @@
+import { Info } from 'lucide-react'
 import styles from './Home.module.css'
 import LeaderboardBanner from '../components/LeaderboardBanner/LeaderboardBanner'
 import WatchAdBanner from '../components/WatchAdBanner/WatchAdBanner'
@@ -8,17 +9,6 @@ import DailyBonusBanner from '../components/DailyBonusBanner/DailyBonusBanner'
 export default function Home() {
   return (
     <main className={styles.page}>
-      <header className={styles.topbar}>
-        <div>
-          <span className={styles.brandMark}>V</span>
-          <div>
-            <strong>VELOOP</strong>
-            <small>REWARDS</small>
-          </div>
-        </div>
-        <p>Task 0G · Rewards & Engagement</p>
-      </header>
-
       <section className={styles.stack} aria-label="VELOOP Rewards feature banners">
         <LeaderboardBanner />
         <WatchAdBanner />
@@ -28,13 +18,16 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <p>
-          Demo / Placeholder Notice: ranking, reward and streak values are development
-          placeholders and may change in the final product.
-        </p>
-        <div className={styles.logoText}>
-          <strong>VELOOP</strong>
-          <span>REWARDS</span>
+        <div className={styles.notice}>
+          <Info size={21} aria-hidden="true" />
+          <p>
+            Demo / Placeholder Notice: Ranking, reward, and streak values are development
+            placeholders for presentation purposes only and may change in the final product.
+          </p>
+        </div>
+        <div className={styles.logoText} aria-label="VELOOP Rewards">
+          <strong><span>VE</span>LOOP</strong>
+          <small>REWARDS</small>
         </div>
       </footer>
     </main>
