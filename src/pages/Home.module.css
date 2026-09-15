@@ -86,3 +86,12 @@
   .stack { gap: 12px; }
   .footer { padding-top: 14px; }
 }
+
+@media (max-width: 1024px) {
+  .page { width:min(100% - 20px, 920px); padding-top:10px; }
+  .stack { gap:14px; }
+}
+@media (max-width: 600px) {
+  .page { width:calc(100% - 12px); padding-top:6px; }
+  .stack { gap:12px; }
+}

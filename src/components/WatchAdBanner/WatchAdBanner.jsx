@@ -1,9 +1,20 @@
-import { useState } from 'react'
 import { ArrowRight, Check, Play, ShieldCheck, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import usePointerParallax from '../../hooks/usePointerParallax'
-import watchVisual from '../../assets/watch-earn-visual.webp'
+import watchVisual from '../../assets/watch-earn-visual-clean.png'
 import styles from './WatchAdBanner.module.css'
+
+const floatingVECoins = [
+  { key: 'leftTop', label: 'VE', className: styles.coinLeftTop },
+  { key: 'leftMid', label: 'VE', className: styles.coinLeftMid },
+  { key: 'rightTop', label: 'VE', className: styles.coinRightTop },
+  { key: 'rightUpper', label: 'VE', className: styles.coinRightUpper },
+  { key: 'rightCenter', label: 'VE', className: styles.coinRightCenter },
+  { key: 'rightInner', label: 'VE', className: styles.coinRightInner },
+  { key: 'rightOuter', label: 'VE', className: styles.coinRightOuter },
+  { key: 'rightBottom', label: 'VE', className: styles.coinRightBottom },
+]
 
 export default function WatchAdBanner() {
   const [previewed, setPreviewed] = useState(false)
@@ -17,12 +28,22 @@ export default function WatchAdBanner() {
   return (
     <article className={`${styles.banner} ${previewed ? styles.previewed : ''}`} {...motion}>
       <div className={styles.visual}>
-        <img src={watchVisual} alt="Video reward screen with VE wallet and reward coins" className={styles.visualImage} />
-        <button type="button" className={styles.playHotspot} onClick={previewReward} aria-label="Preview watch and earn interaction">
-          <Play fill="currentColor" aria-hidden="true" />
-        </button>
-        <div className={styles.rewardToast} role="status" aria-live="polite">
-          <Check size={16} aria-hidden="true" /> Reward preview · +38 VEs
+        <div className={styles.visualStage}>
+          <img src={watchVisual} alt="Video reward screen with VE wallet and floating reward coins" className={styles.visualImage} />
+
+          {floatingVECoins.map((coin) => (
+            <span key={coin.key} className={`${styles.veCoin} ${coin.className}`} aria-hidden="true">
+              {coin.label}
+            </span>
+          ))}
+
+          <button type="button" className={styles.playHotspot} onClick={previewReward} aria-label="Preview watch and earn interaction">
+            <Play fill="currentColor" aria-hidden="true" />
+          </button>
+
+          <div className={styles.rewardToast} role="status" aria-live="polite">
+            <Check size={16} aria-hidden="true" /> Reward preview · +38 VEs
+          </div>
         </div>
       </div>
 

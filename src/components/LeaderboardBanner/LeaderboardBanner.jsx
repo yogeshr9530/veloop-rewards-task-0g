@@ -1,21 +1,58 @@
 import { ArrowRight, Trophy } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import usePointerParallax from '../../hooks/usePointerParallax'
-import leaderboardVisual from '../../assets/leaderboard-visual-user.png'
+import leaderboardVisual from '../../assets/leaderboard-visual-clean.png'
 import styles from './LeaderboardBanner.module.css'
 
-export default function LeaderboardBanner() {
-  const motion = usePointerParallax()
+const floatingRanks = [
+  {
+    key: 'left',
+    rank: '02',
+    name: 'User B',
+    value: '11,820 VEs',
+    className: styles.rankLeft,
+  },
+  {
+    key: 'center',
+    rank: '01',
+    name: 'User A',
+    value: '12,450 VEs',
+    className: styles.rankCenter,
+  },
+  {
+    key: 'right',
+    rank: '03',
+    name: 'User C',
+    value: '10,970 VEs',
+    className: styles.rankRight,
+  },
+]
 
+export default function LeaderboardBanner() {
   return (
-    <article className={styles.banner} {...motion}>
+    <article className={styles.banner}>
       <div className={styles.sparkles} aria-hidden="true">
         <i /><i /><i /><i /><i />
       </div>
 
       <div className={styles.visual} aria-hidden="true">
         <span className={styles.halo} />
-        <img src={leaderboardVisual} alt="" className={styles.visualImage} />
+
+        <div className={styles.visualStage}>
+          <img src={leaderboardVisual} alt="" className={styles.visualImage} />
+
+          {floatingRanks.map((item) => (
+            <div
+              key={item.key}
+              className={`${styles.rankLayer} ${item.className}`}
+            >
+              <span className={styles.floatBadge}>{item.rank}</span>
+              <span className={styles.floatCopy}>
+                <strong>{item.name}</strong>
+                <em>{item.value}</em>
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className={styles.content}>
