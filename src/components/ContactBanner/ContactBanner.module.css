@@ -438,3 +438,49 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   MOBILE DEVICE CROP FIX — keep the complete Contact artwork
+   visible on real phones (including the bottom edge of the PNG).
+   The source artwork touches the bottom of its transparent canvas,
+   so we reserve a few pixels inside the wrapper and remove scaling
+   from the touch animation to prevent sub-pixel clipping.
+   ========================================================= */
+@keyframes contactTouchFloatSafe {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -1px, 0); }
+}
+
+@media (max-width: 600px) {
+  .visual {
+    padding: 4px 8px 8px !important;
+    overflow: hidden !important;
+  }
+
+  .agentWrap {
+    width: min(91%, 334px) !important;
+    height: calc(100% - 8px) !important;
+    max-width: 91% !important;
+    max-height: calc(100% - 8px) !important;
+    padding: 0 2px 6px !important;
+    transform-origin: center center !important;
+  }
+
+  .agentImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+  .agentWrap {
+    animation: contactTouchFloatSafe 4.6s ease-in-out infinite !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agentWrap { animation: none !important; }
+}
