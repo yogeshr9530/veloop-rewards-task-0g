@@ -541,3 +541,47 @@
     width: min(88%, 312px) !important;
   }
 }
+
+/* =========================================================
+   EXTRA MOBILE EDGE POLISH — slightly stronger fade requested.
+   Makes the flat lower edge of the source artwork disappear
+   more naturally without shrinking the illustration.
+   ========================================================= */
+@media (max-width: 600px) {
+  .visual {
+    padding-bottom: 12px !important;
+  }
+
+  .agentWrap {
+    height: calc(100% - 12px) !important;
+    max-height: calc(100% - 12px) !important;
+    padding-bottom: 10px !important;
+  }
+
+  .agentWrap::before {
+    left: 12% !important;
+    right: 12% !important;
+    bottom: 7px !important;
+    height: 22px !important;
+    opacity: .9;
+  }
+
+  .agentImage {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 88%,
+      rgba(0,0,0,.94) 92%,
+      rgba(0,0,0,.68) 96%,
+      transparent 100%
+    ) !important;
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 88%,
+      rgba(0,0,0,.94) 92%,
+      rgba(0,0,0,.68) 96%,
+      transparent 100%
+    ) !important;
+  }
+}
