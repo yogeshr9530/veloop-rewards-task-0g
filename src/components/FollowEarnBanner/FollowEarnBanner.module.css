@@ -406,3 +406,393 @@
   0%,100% { transform: translate3d(0,0,0) rotate(0deg); }
   50% { transform: translate3d(0,-1.5px,0) rotate(.05deg); }
 }
+
+/* =========================================================
+   REVIEWER FINAL PASS — rebuilt section 04 proportions.
+   Desktop: content | large phone | reward card.
+   Tablet: large phone + reward card above compact content.
+   Mobile: large phone with a compact reward overlay, then content.
+   ========================================================= */
+@media (min-width: 1025px) {
+  .banner {
+    height:430px !important;
+    min-height:430px !important;
+    max-height:430px !important;
+    grid-template-columns:33% 67% !important;
+    grid-template-rows:1fr !important;
+  }
+  .content { padding:32px 28px 32px 40px !important; }
+  .visual {
+    height:430px !important;
+    display:grid !important;
+    grid-template-columns:minmax(0, 62%) minmax(250px, 38%) !important;
+    gap:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    align-items:stretch !important;
+  }
+  .phoneWrap {
+    width:100% !important;
+    height:430px !important;
+    min-height:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    border-right:1px solid rgba(136,89,224,.08) !important;
+  }
+  .phoneImage {
+    width:100% !important;
+    height:420px !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+  }
+  .rewardCard {
+    width:calc(100% - 28px) !important;
+    max-width:360px !important;
+    margin:0 !important;
+    padding:22px !important;
+    align-self:center !important;
+    justify-self:center !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner {
+    height:500px !important;
+    min-height:500px !important;
+    max-height:500px !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:50% 50% !important;
+    overflow:hidden !important;
+  }
+  .visual {
+    grid-row:1 !important;
+    display:grid !important;
+    grid-template-columns:minmax(0, 64%) minmax(210px, 36%) !important;
+    align-items:center !important;
+    gap:8px !important;
+    height:100% !important;
+    padding:0 12px !important;
+    overflow:hidden !important;
+  }
+  .phoneWrap {
+    width:100% !important;
+    height:100% !important;
+    min-height:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    overflow:hidden !important;
+  }
+  .phoneImage {
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+  }
+  .rewardCard {
+    width:100% !important;
+    max-width:300px !important;
+    margin:0 !important;
+    padding:14px !important;
+    border-radius:14px !important;
+    align-self:center !important;
+    justify-self:center !important;
+  }
+  .rewardIntro { gap:9px !important; }
+  .giftIcon { width:40px !important; height:40px !important; flex:0 0 40px !important; }
+  .rewardIntro p { font-size:.74rem !important; line-height:1.35 !important; }
+  .divider { margin:9px 0 !important; }
+  .rewardCard strong { font-size:1.45rem !important; }
+  .rewardCard small { margin-top:4px !important; font-size:.66rem !important; }
+  .content {
+    grid-row:2 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+    gap:7px !important;
+    padding:11px 24px 15px !important;
+  }
+  .banner h2 { font-size:clamp(2rem,5vw,2.5rem) !important; }
+  .content > p { margin:0 !important; font-size:.86rem !important; line-height:1.4 !important; }
+  .cta { width:220px !important; min-height:46px !important; }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height:510px !important;
+    min-height:510px !important;
+    max-height:510px !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:46% 54% !important;
+    overflow:hidden !important;
+  }
+  .visual {
+    grid-row:1 !important;
+    position:relative !important;
+    display:block !important;
+    height:100% !important;
+    padding:0 !important;
+    overflow:hidden !important;
+  }
+  .phoneWrap {
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    min-height:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    overflow:hidden !important;
+  }
+  .phoneImage {
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+  }
+  .rewardCard {
+    position:absolute !important;
+    z-index:5 !important;
+    right:10px !important;
+    bottom:10px !important;
+    width:148px !important;
+    height:68px !important;
+    min-height:68px !important;
+    margin:0 !important;
+    padding:8px 10px !important;
+    display:grid !important;
+    grid-template-columns:34px 1fr !important;
+    grid-template-rows:1fr 1fr !important;
+    column-gap:8px !important;
+    align-items:center !important;
+    border-radius:12px !important;
+    background:linear-gradient(180deg,rgba(37,24,62,.96),rgba(20,14,35,.98)) !important;
+    box-shadow:0 12px 28px rgba(0,0,0,.32) !important;
+    animation:none !important;
+  }
+  .rewardIntro { display:contents !important; }
+  .giftIcon {
+    grid-column:1 !important;
+    grid-row:1 / 3 !important;
+    width:34px !important;
+    height:34px !important;
+    flex:0 0 34px !important;
+  }
+  .rewardIntro p, .divider { display:none !important; }
+  .rewardCard strong {
+    grid-column:2 !important;
+    grid-row:1 !important;
+    align-self:end !important;
+    font-size:1.02rem !important;
+    line-height:1 !important;
+  }
+  .rewardCard small {
+    grid-column:2 !important;
+    grid-row:2 !important;
+    align-self:start !important;
+    margin:3px 0 0 !important;
+    font-size:.56rem !important;
+  }
+  .content {
+    grid-row:2 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+    gap:6px !important;
+    padding:9px 15px 12px !important;
+  }
+  .kicker { margin:0 !important; }
+  .index { width:34px !important; height:34px !important; }
+  .stage { min-height:32px !important; }
+  .banner h2 { margin:0 !important; font-size:clamp(1.82rem,8.6vw,2.18rem) !important; line-height:1 !important; }
+  .content > p { margin:0 !important; font-size:.79rem !important; line-height:1.37 !important; }
+  .cta { width:100% !important; min-height:46px !important; }
+}
+
+@media (max-width: 380px) {
+  .rewardCard { right:7px !important; bottom:7px !important; width:138px !important; }
+  .content { padding-inline:13px !important; }
+  .content > p { font-size:.75rem !important; }
+}
+
+/* =========================================================
+   BUG FIX — section 04 mobile layout.
+   Keep the +500 reward example OUTSIDE the phone artwork.
+   Order: illustration -> content/CTA -> compact reward card.
+   ========================================================= */
+@media (max-width: 600px) {
+  .banner {
+    height: 510px !important;
+    min-height: 510px !important;
+    max-height: 510px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .visual {
+    display: contents !important;
+  }
+
+  .phoneWrap {
+    order: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 190px !important;
+    min-height: 190px !important;
+    flex: 0 0 190px !important;
+    padding: 4px 8px 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+  }
+
+  .phoneImage {
+    display: block !important;
+    width: min(92%, 360px) !important;
+    height: 184px !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+
+  .content {
+    order: 2 !important;
+    flex: 0 0 238px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 15px 9px !important;
+  }
+
+  .kicker { margin: 0 !important; }
+  .index { width: 34px !important; height: 34px !important; }
+  .stage { min-height: 32px !important; }
+  .banner h2 {
+    margin: 0 !important;
+    font-size: clamp(1.8rem, 8.4vw, 2.12rem) !important;
+    line-height: 1 !important;
+  }
+  .content > p {
+    margin: 0 !important;
+    font-size: .78rem !important;
+    line-height: 1.36 !important;
+  }
+  .cta {
+    width: 100% !important;
+    min-height: 45px !important;
+  }
+
+  .rewardCard {
+    order: 3 !important;
+    position: relative !important;
+    inset: auto !important;
+    z-index: 4 !important;
+    flex: 0 0 70px !important;
+    width: calc(100% - 30px) !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    margin: 0 15px 12px !important;
+    padding: 8px 12px !important;
+    display: grid !important;
+    grid-template-columns: 38px 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+    column-gap: 9px !important;
+    align-items: center !important;
+    border-radius: 12px !important;
+    background: linear-gradient(180deg,rgba(37,24,62,.96),rgba(20,14,35,.98)) !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.24) !important;
+    animation: none !important;
+  }
+
+  .rewardIntro { display: contents !important; }
+  .giftIcon {
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+  }
+  .rewardIntro p,
+  .divider { display: none !important; }
+  .rewardCard strong {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: end !important;
+    font-size: 1.14rem !important;
+    line-height: 1 !important;
+  }
+  .rewardCard small {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    align-self: start !important;
+    margin: 2px 0 0 !important;
+    font-size: .6rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .phoneWrap {
+    height: 184px !important;
+    min-height: 184px !important;
+    flex-basis: 184px !important;
+  }
+  .phoneImage { height: 178px !important; }
+  .content {
+    flex-basis: 244px !important;
+    padding-inline: 13px !important;
+  }
+  .rewardCard {
+    width: calc(100% - 26px) !important;
+    margin-inline: 13px !important;
+  }
+}
+
+/* =========================================================
+   FINAL SUBMISSION — section 04 mobile balance.
+   The reward example stays below the phone artwork (never on top
+   of it), while the illustration uses more of its parent region.
+   ========================================================= */
+@media (max-width: 600px) {
+  .phoneWrap {
+    height: 200px !important;
+    min-height: 200px !important;
+    flex: 0 0 200px !important;
+    padding: 2px 8px 0 !important;
+  }
+
+  .phoneImage {
+    width: min(96%, 380px) !important;
+    height: 196px !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+
+  .content {
+    flex: 0 0 228px !important;
+  }
+
+  .rewardCard {
+    position: relative !important;
+    inset: auto !important;
+    order: 3 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .phoneWrap {
+    height: 194px !important;
+    min-height: 194px !important;
+    flex-basis: 194px !important;
+  }
+  .phoneImage { height: 190px !important; }
+  .content { flex-basis: 234px !important; }
+}

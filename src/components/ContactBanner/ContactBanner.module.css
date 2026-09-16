@@ -336,3 +336,105 @@
   0%,100% { transform: translate3d(0,0,0) scale(1); }
   50% { transform: translate3d(0,-1.4px,0) scale(1.001); }
 }
+
+/* =========================================================
+   REVIEWER FINAL PASS — larger support illustration that fills
+   the assigned visual zone on desktop, tablet and mobile.
+   ========================================================= */
+@media (min-width: 1025px) {
+  .banner { height:430px !important; min-height:430px !important; max-height:430px !important; grid-template-columns:40% 60% !important; }
+  .visual { height:430px !important; padding:0 8px !important; overflow:hidden !important; }
+  .agentWrap {
+    width:auto !important;
+    height:414px !important;
+    max-width:96% !important;
+    aspect-ratio:1448 / 1086 !important;
+  }
+  .agentImage { width:100% !important; height:100% !important; object-fit:contain !important; }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner { height:480px !important; min-height:480px !important; max-height:480px !important; grid-template-rows:47% 53% !important; }
+  .visual { height:100% !important; padding:0 6px !important; overflow:hidden !important; }
+  .agentWrap {
+    width:auto !important;
+    height:100% !important;
+    max-width:96% !important;
+    aspect-ratio:1448 / 1086 !important;
+  }
+  .content { padding:10px 24px 14px !important; }
+}
+@media (max-width: 600px) {
+  .banner { height:450px !important; min-height:450px !important; max-height:450px !important; grid-template-rows:46% 54% !important; }
+  .visual { height:100% !important; padding:0 2px !important; overflow:hidden !important; }
+  .agentWrap {
+    width:auto !important;
+    height:100% !important;
+    max-width:98% !important;
+    aspect-ratio:1448 / 1086 !important;
+  }
+  .content { padding:9px 15px 12px !important; }
+  .kicker { margin-bottom:5px !important; }
+  .content > p { margin:6px 0 8px !important; }
+}
+
+/* =========================================================
+   BUG FIX — keep section 03 artwork fully visible.
+   The illustration now keeps a safe inset inside the visual
+   zone so float/parallax never clips its head, stars or laptop.
+   ========================================================= */
+@media (min-width: 1025px) {
+  .visual {
+    padding: 8px 14px !important;
+    overflow: hidden !important;
+  }
+  .agentWrap {
+    width: min(92%, 540px) !important;
+    height: calc(100% - 16px) !important;
+    max-width: 92% !important;
+    max-height: calc(100% - 16px) !important;
+  }
+  .agentImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .visual {
+    padding: 7px 12px !important;
+    overflow: hidden !important;
+  }
+  .agentWrap {
+    width: min(88%, 430px) !important;
+    height: calc(100% - 14px) !important;
+    max-width: 88% !important;
+    max-height: calc(100% - 14px) !important;
+  }
+  .agentImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .visual {
+    padding: 6px 8px !important;
+    overflow: hidden !important;
+  }
+  .agentWrap {
+    width: min(90%, 330px) !important;
+    height: calc(100% - 12px) !important;
+    max-width: 90% !important;
+    max-height: calc(100% - 12px) !important;
+  }
+  .agentImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+}

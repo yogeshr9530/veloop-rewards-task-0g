@@ -737,3 +737,44 @@
   0%,100% { transform: translateX(-50%) translate3d(0,0,0); }
   50% { transform: translateX(-50%) translate3d(0,-1.2px,0); }
 }
+
+/* =========================================================
+   REVIEWER FINAL PASS — illustration fills its visual parent
+   without stretching, while every device stays in task height limits.
+   ========================================================= */
+@media (min-width: 1025px) {
+  .banner { height:430px !important; min-height:430px !important; max-height:430px !important; grid-template-columns:39% 61% !important; }
+  .visual { height:430px !important; padding:0 8px 0 0 !important; overflow:hidden !important; }
+  .visualStage {
+    height:418px !important;
+    width:auto !important;
+    max-width:100% !important;
+    aspect-ratio:1448 / 1086 !important;
+    transform:none !important;
+  }
+  .visualImage { width:100% !important; height:100% !important; object-fit:contain !important; }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner { height:500px !important; min-height:500px !important; max-height:500px !important; grid-template-rows:48% 52% !important; }
+  .visual { height:100% !important; padding:0 8px !important; overflow:hidden !important; }
+  .visualStage {
+    height:100% !important;
+    width:auto !important;
+    max-width:96% !important;
+    aspect-ratio:1448 / 1086 !important;
+    transform:none !important;
+  }
+  .content { padding:11px 24px 14px !important; gap:6px !important; }
+}
+@media (max-width: 600px) {
+  .banner { height:480px !important; min-height:480px !important; max-height:480px !important; grid-template-rows:46% 54% !important; }
+  .visual { height:100% !important; padding:0 2px !important; overflow:hidden !important; }
+  .visualStage {
+    height:100% !important;
+    width:auto !important;
+    max-width:98% !important;
+    aspect-ratio:1448 / 1086 !important;
+    transform:none !important;
+  }
+  .content { padding:8px 15px 11px !important; gap:5px !important; }
+}
