@@ -491,3 +491,52 @@
   .visualStage { width: min(100%, 440px); }
   .floatCopy { top: 6.2cqw; }
 }
+
+/* Reviewer polish: professional font weights and medium illustration scale. */
+.kicker, .stage, .index { font-weight: 700; }
+.banner h2 { font-weight: 700; letter-spacing: -.035em; }
+.content > p { font-weight: 400; }
+.prize { font-weight: 500; }
+.prize strong { font-weight: 700; }
+.cta { font-weight: 700; }
+.floatCopy strong, .floatCopy em, .floatBadge { font-weight: 700; }
+@media (min-width: 1025px) {
+  .visualStage { height: 372px; max-width: 91%; transform: scaleX(1.08); }
+}
+@media (max-width: 1024px) {
+  .visualStage { width: min(86%, 560px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height: 265px; }
+  .visualStage { width: min(86%, 365px); }
+}
+
+
+/* Height compliance pass — document limits: desktop 410–450, tablet 380–540, mobile 330–520. */
+@media (min-width: 1025px) {
+  .banner { height:430px !important; min-height:430px !important; max-height:430px !important; }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner { height:500px !important; min-height:500px !important; max-height:500px !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:245px 255px !important; overflow:hidden; }
+  .visual { grid-row:1 !important; min-height:0 !important; height:245px !important; padding:0 !important; }
+  .visualStage { height:238px !important; width:min(88%,560px) !important; max-width:88% !important; }
+  .content { grid-row:2 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; justify-content:center !important; gap:8px !important; padding:12px 24px 16px !important; }
+  .kicker { margin:0 0 3px !important; }
+  .banner h2 { font-size:clamp(2rem,5vw,2.45rem) !important; line-height:1 !important; }
+  .content > p { margin:4px 0 !important; font-size:.86rem !important; line-height:1.42 !important; }
+  .prize { min-height:36px !important; margin:2px 0 !important; }
+  .cta { width:220px !important; min-height:46px !important; }
+}
+@media (max-width: 600px) {
+  .banner { height:480px !important; min-height:480px !important; max-height:480px !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:210px 270px !important; overflow:hidden; }
+  .visual { grid-row:1 !important; min-height:0 !important; height:210px !important; padding:0 !important; }
+  .visualStage { height:205px !important; width:min(88%,365px) !important; max-width:88% !important; }
+  .content { grid-row:2 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; justify-content:center !important; gap:7px !important; padding:11px 16px 14px !important; }
+  .kicker { margin:0 0 2px !important; }
+  .index { width:34px !important; height:34px !important; }
+  .stage { min-height:32px !important; }
+  .banner h2 { font-size:clamp(1.78rem,8.5vw,2.15rem) !important; line-height:1 !important; }
+  .content > p { margin:2px 0 !important; font-size:.79rem !important; line-height:1.38 !important; }
+  .prize { min-height:34px !important; margin:1px 0 !important; font-size:.68rem !important; }
+  .cta { width:100% !important; min-height:44px !important; }
+}

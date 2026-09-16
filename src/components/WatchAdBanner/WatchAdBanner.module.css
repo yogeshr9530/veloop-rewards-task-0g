@@ -281,3 +281,51 @@
   .visual { min-height: 290px; }
   .visualStage { width: min(100%, 440px); }
 }
+
+/* Reviewer polish: professional font weights and medium illustration scale. */
+.kicker, .stage, .index { font-weight: 700; }
+.banner h2 { font-weight: 700; letter-spacing: -.035em; }
+.content > p { font-weight: 400; }
+.badges span { font-weight: 500; }
+.cta { font-weight: 700; }
+.veCoin { font-weight: 700; }
+@media (min-width: 1025px) {
+  .visualStage { height: 366px; max-width: 92%; }
+}
+@media (max-width: 1024px) {
+  .visualStage { width: min(86%, 560px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height: 265px; }
+  .visualStage { width: min(86%, 365px); }
+}
+
+
+/* Height compliance pass. */
+@media (min-width: 1025px) {
+  .banner { height:430px !important; min-height:430px !important; max-height:430px !important; }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner { height:500px !important; min-height:500px !important; max-height:500px !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:245px 255px !important; overflow:hidden; }
+  .visual { grid-row:1 !important; min-height:0 !important; height:245px !important; padding:0 !important; }
+  .visualStage { width:min(88%,575px) !important; height:238px !important; }
+  .content { grid-row:2 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; justify-content:center !important; gap:8px !important; padding:12px 24px 16px !important; }
+  .banner h2 { font-size:clamp(2rem,5vw,2.45rem) !important; line-height:1 !important; }
+  .content > p { margin:2px 0 !important; font-size:.86rem !important; line-height:1.42 !important; }
+  .badges { width:auto !important; display:flex !important; gap:8px !important; }
+  .badges span { min-height:34px !important; font-size:.69rem !important; }
+  .cta { width:220px !important; min-height:46px !important; }
+}
+@media (max-width: 600px) {
+  .banner { height:480px !important; min-height:480px !important; max-height:480px !important; display:grid !important; grid-template-columns:1fr !important; grid-template-rows:210px 270px !important; overflow:hidden; }
+  .visual { grid-row:1 !important; min-height:0 !important; height:210px !important; padding:0 !important; }
+  .visualStage { width:min(94%,380px) !important; height:205px !important; }
+  .content { grid-row:2 !important; display:flex !important; flex-direction:column !important; align-items:flex-start !important; justify-content:center !important; gap:7px !important; padding:10px 16px 13px !important; }
+  .index { width:34px !important; height:34px !important; }
+  .stage { min-height:32px !important; }
+  .banner h2 { font-size:clamp(1.78rem,8.3vw,2.1rem) !important; line-height:1 !important; }
+  .content > p { margin:1px 0 !important; font-size:.78rem !important; line-height:1.36 !important; }
+  .badges { width:100% !important; display:grid !important; grid-template-columns:1fr 1fr !important; gap:6px !important; }
+  .badges span { min-height:34px !important; padding:0 6px !important; font-size:.66rem !important; }
+  .cta { width:100% !important; min-height:44px !important; }
+}
