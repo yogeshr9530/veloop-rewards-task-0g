@@ -541,3 +541,70 @@
     width: min(88%, 312px) !important;
   }
 }
+
+/* =========================================================
+   FINAL MOBILE OVERLAP FIX
+   Prevent the support PNG's lower edge from being clipped by
+   the mobile visual row. The wrapper uses border-box sizing,
+   removes the previous fade mask, keeps a real bottom safety
+   inset, and stays slightly lifted during touch animation.
+   ========================================================= */
+@keyframes contactTouchFloatNoClip {
+  0%, 100% { transform: translate3d(0, -2px, 0); }
+  50% { transform: translate3d(0, -3px, 0); }
+}
+
+@media (max-width: 600px) {
+  .visual {
+    box-sizing: border-box !important;
+    padding: 6px 8px 15px !important;
+    overflow: hidden !important;
+  }
+
+  .agentWrap {
+    box-sizing: border-box !important;
+    width: min(88%, 324px) !important;
+    height: calc(100% - 4px) !important;
+    max-width: 88% !important;
+    max-height: calc(100% - 4px) !important;
+    padding: 0 2px 11px !important;
+    margin: 0 auto 2px !important;
+    overflow: visible !important;
+    transform-origin: center center !important;
+  }
+
+  .agentImage {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+  .agentWrap {
+    animation: contactTouchFloatNoClip 4.8s ease-in-out infinite !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .visual {
+    padding-bottom: 16px !important;
+  }
+  .agentWrap {
+    width: min(86%, 306px) !important;
+    max-width: 86% !important;
+    padding-bottom: 12px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agentWrap {
+    animation: none !important;
+    transform: translateY(-2px) !important;
+  }
+}
