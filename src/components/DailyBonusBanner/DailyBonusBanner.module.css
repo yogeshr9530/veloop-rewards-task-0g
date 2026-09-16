@@ -717,3 +717,17 @@
     padding-inline: 14px !important;
   }
 }
+
+/* Keep Daily Bonus motion centered and away from card edges. */
+@keyframes giftFloat {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  50% { transform:translateY(-1.3px) rotate(.05deg); }
+}
+@keyframes giftGlow {
+  0%,100% { opacity:.46; transform:scale(.995); }
+  50% { opacity:.68; transform:scale(1.007); }
+}
+@keyframes summaryFloat {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-.7px); }
+}

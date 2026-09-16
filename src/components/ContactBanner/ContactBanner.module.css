@@ -245,3 +245,13 @@
   .content > p { margin:9px 0 11px !important; font-size:.82rem !important; line-height:1.42 !important; }
   .cta { min-height:48px !important; }
 }
+
+/* Keep the support illustration motion subtle and inside its visual region. */
+@keyframes softFloat {
+  0%,100% { transform:translateY(0) scale(1); }
+  50% { transform:translateY(-1.2px) scale(1.002); }
+}
+@keyframes glowBreath {
+  0%,100% { opacity:.62; transform:scale(.995); }
+  50% { opacity:.78; transform:scale(1.008); }
+}

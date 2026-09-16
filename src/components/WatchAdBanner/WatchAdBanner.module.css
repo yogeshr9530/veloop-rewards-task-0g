@@ -329,3 +329,37 @@
   .badges span { min-height:34px !important; padding:0 6px !important; font-size:.66rem !important; }
   .cta { width:100% !important; min-height:44px !important; }
 }
+
+/* Final animation positioning pass: labels stay attached to the upper face of the coins. */
+.coinLeftTop     { left:18.0%; top:24.8%; --coin-rotate:-14deg; }
+.coinLeftMid     { left:11.8%; top:43.2%; --coin-rotate:-13deg; }
+.coinRightTop    { left:78.2%; top:25.8%; --coin-rotate:10deg; }
+.coinRightUpper  { left:73.8%; top:42.2%; --coin-rotate:0deg; }
+.coinRightCenter { left:81.2%; top:43.0%; --coin-rotate:3deg; }
+.coinRightInner  { left:85.7%; top:37.8%; --coin-rotate:8deg; }
+.coinRightOuter  { left:89.2%; top:41.6%; --coin-rotate:11deg; }
+.coinRightBottom { left:91.8%; top:64.2%; --coin-rotate:14deg; }
+.veCoin { font-size:2.45cqw; }
+@keyframes veMicroFloat {
+  0%,100% { transform:translate(-50%,-50%) translateY(0) rotate(var(--coin-rotate)); }
+  50% { transform:translate(-50%,-50%) translateY(-.7px) rotate(var(--coin-rotate)); }
+}
+@keyframes coinFloat {
+  0%,100% { transform:translate(-50%,-50%) translateY(0) rotate(var(--coin-rotate)) scale(1); }
+  50% { transform:translate(-50%,-50%) translateY(-.7px) rotate(var(--coin-rotate)) scale(1.005); }
+}
+@keyframes playBreath {
+  0%,100% { transform:scale(.98); opacity:.2; }
+  50% { transform:scale(1.025); opacity:.42; }
+}
+@media (max-width:600px) {
+  .veCoin { font-size:2.3cqw; }
+  .coinLeftTop     { left:18.4%; top:25.0%; }
+  .coinLeftMid     { left:12.3%; top:43.2%; }
+  .coinRightTop    { left:78.0%; top:26.0%; }
+  .coinRightUpper  { left:74.0%; top:42.4%; }
+  .coinRightCenter { left:81.0%; top:43.2%; }
+  .coinRightInner  { left:85.4%; top:38.0%; }
+  .coinRightOuter  { left:88.8%; top:41.8%; }
+  .coinRightBottom { left:91.0%; top:63.5%; }
+}

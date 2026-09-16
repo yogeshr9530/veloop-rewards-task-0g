@@ -540,3 +540,36 @@
   .prize { min-height:34px !important; margin:1px 0 !important; font-size:.68rem !important; }
   .cta { width:100% !important; min-height:44px !important; }
 }
+
+/* Final animation positioning pass: keep ranking motion inside the podium artwork. */
+.rankLeft   { left: 21.0%; top: 53.1%; }
+.rankCenter { left: 49.5%; top: 52.6%; }
+.rankRight  { left: 77.0%; top: 53.1%; }
+.floatBadge { top: .15cqw; }
+.floatCopy  { top: 6.25cqw; }
+@keyframes badgeMicroFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-.65px); }
+}
+@keyframes copyMicroFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-.8px); }
+}
+@keyframes valueFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-.65px); }
+}
+@keyframes copyFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-.8px); }
+}
+@keyframes leaderTwinkle {
+  0%,100% { opacity:.42; transform:scale(.92); }
+  50% { opacity:.78; transform:scale(1.04); }
+}
+@media (max-width: 600px) {
+  .rankLeft   { left: 21.5%; top: 53.2%; }
+  .rankCenter { left: 49.5%; top: 52.8%; }
+  .rankRight  { left: 76.7%; top: 53.2%; }
+  .floatCopy { top: 6.05cqw; }
+}

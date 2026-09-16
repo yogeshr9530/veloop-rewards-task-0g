@@ -279,3 +279,13 @@
   .rewardCard strong { grid-column:2 !important; grid-row:1 !important; align-self:end !important; font-size:1.18rem !important; }
   .rewardCard small { grid-column:2 !important; grid-row:2 !important; align-self:start !important; margin:2px 0 0 !important; font-size:.6rem !important; }
 }
+
+/* Keep phone/social illustration motion centered instead of drifting outward. */
+@keyframes phoneFloat {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  50% { transform:translateY(-1.3px) rotate(.06deg); }
+}
+@keyframes followGlow {
+  0%,100% { opacity:.45; transform:scale(.995); }
+  50% { opacity:.66; transform:scale(1.007); }
+}
