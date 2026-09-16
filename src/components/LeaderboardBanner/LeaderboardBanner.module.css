@@ -573,3 +573,18 @@
   .rankRight  { left: 76.7%; top: 53.2%; }
   .floatCopy { top: 6.05cqw; }
 }
+
+/* Final micro-fix: lower only the 02 and 03 rank numbers so they sit fully inside their circles. */
+.rankLeft .floatBadge,
+.rankRight .floatBadge {
+  top: .78cqw;
+}
+.rankCenter .floatBadge {
+  top: .15cqw;
+}
+@media (max-width: 600px) {
+  .rankLeft .floatBadge,
+  .rankRight .floatBadge {
+    top: .9cqw;
+  }
+}
