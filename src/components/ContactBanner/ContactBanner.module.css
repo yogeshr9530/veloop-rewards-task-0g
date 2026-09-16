@@ -484,3 +484,60 @@
 @media (prefers-reduced-motion: reduce) {
   .agentWrap { animation: none !important; }
 }
+
+/* =========================================================
+   FINAL REAL-PHONE ARTWORK EDGE FIX
+   The source PNG itself ends with a flat lower artwork edge.
+   On small screens that can look like CSS clipping even when
+   the complete PNG is visible.  Fade only the final few pixels
+   of the artwork into the banner and add a soft grounding glow.
+   ========================================================= */
+@media (max-width: 600px) {
+  .visual {
+    padding: 4px 8px 10px !important;
+    overflow: hidden !important;
+  }
+
+  .agentWrap {
+    width: min(90%, 330px) !important;
+    height: calc(100% - 10px) !important;
+    max-width: 90% !important;
+    max-height: calc(100% - 10px) !important;
+    padding: 0 3px 8px !important;
+    overflow: visible !important;
+  }
+
+  .agentWrap::before {
+    content: "";
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    bottom: 5px;
+    height: 18px;
+    z-index: 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(77, 153, 236, .20), rgba(77, 153, 236, 0) 72%);
+    filter: blur(5px);
+    pointer-events: none;
+  }
+
+  .agentImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 91%, rgba(0,0,0,.96) 94%, rgba(0,0,0,.72) 97%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 91%, rgba(0,0,0,.96) 94%, rgba(0,0,0,.72) 97%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 380px) {
+  .agentWrap {
+    width: min(88%, 312px) !important;
+  }
+}
