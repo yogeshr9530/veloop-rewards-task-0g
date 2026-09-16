@@ -3,7 +3,6 @@ import { ArrowRight, Check, Copy, Headphones, HelpCircle, Mail, MessageSquare, T
 import { Link } from 'react-router-dom'
 import usePointerParallax from '../../hooks/usePointerParallax'
 import supportVisual from '../../assets/contact-support-stars.png'
-import mobileSupportVisual from '../../assets/contact-mobile-visual.png'
 import styles from './ContactBanner.module.css'
 
 const email = 'velooprewardsofficial@gmail.com'
@@ -61,8 +60,6 @@ export default function ContactBanner() {
   return (
     <article className={styles.banner} {...motion}>
       <div className={styles.visual}>
-        <img src={mobileSupportVisual} alt="VELOOP support agent and support options" className={styles.mobileVisualImage} />
-
         <div className={styles.agentWrap}>
           <img src={supportVisual} alt="Friendly VELOOP customer support agent with headset, laptop and glowing stars" className={styles.agentImage} />
         </div>

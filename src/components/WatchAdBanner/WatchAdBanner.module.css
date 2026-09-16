@@ -40,10 +40,12 @@
 
 @keyframes coinFloat {
   0%, 100% { transform: translate(-50%, -50%) translateY(0px) rotate(var(--coin-rotate)) scale(1); }
-  50% { transform: translate(-50%, -50%) translateY(-7px) rotate(var(--coin-rotate)) scale(1.03); }
+  50% { transform: translate(-50%, -50%) translateY(-2.5px) rotate(var(--coin-rotate)) scale(1.015); }
 }
 
-.playHotspot { position:absolute; z-index:5; left:37.5%; top:49%; width:68px; height:68px; border:0; border-radius:50%; background:rgba(18,120,246,.04); color:transparent; cursor:pointer; transition:background .2s ease,box-shadow .2s ease,transform .2s ease; }
+.playHotspot { position:absolute; z-index:5; left:37.5%; top:49%; width:68px; height:68px; border:0; border-radius:50%; background:rgba(18,120,246,.035); color:transparent; cursor:pointer; transition:background .2s ease,box-shadow .2s ease,transform .2s ease; }
+.playHotspot::after{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(78,170,255,.18);animation:playBreath 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes playBreath{0%,100%{transform:scale(.94);opacity:.18}50%{transform:scale(1.08);opacity:.55}}
 .playHotspot svg { width:30px; height:30px; margin:auto; opacity:0; }
 .playHotspot:hover,.playHotspot:focus-visible { background:rgba(40,143,255,.12); box-shadow:0 0 0 5px rgba(52,151,255,.08),0 0 32px rgba(45,135,255,.2); transform:scale(1.05); }
 .rewardToast { position:absolute; z-index:6; right:10%; top:14%; display:flex; align-items:center; gap:7px; min-height:36px; padding:0 11px; border:1px solid rgba(84,165,255,.32); border-radius:10px; background:rgba(5,19,40,.92); color:#cce7ff; font-size:.7rem; font-weight:760; opacity:0; transform:translateY(9px) scale(.97); pointer-events:none; transition:opacity .2s ease,transform .2s ease; box-shadow:0 12px 28px rgba(0,0,0,.26); }
@@ -67,7 +69,7 @@
 
 @media (max-width:880px){ .banner{height:540px;grid-template-rows:285px 255px}.visualStage{width:min(760px,92%);height:278px}.content{grid-template-columns:1fr auto;grid-template-rows:auto auto auto;gap:8px 18px;padding:15px 24px 18px}.kicker{grid-column:1;grid-row:1}.banner h2{grid-column:1;grid-row:2;font-size:clamp(2rem,5.4vw,2.7rem)}.content>p{grid-column:1;grid-row:3;align-self:start;margin:0}.badges{grid-column:2;grid-row:1;align-self:center;margin:0}.cta{grid-column:2;grid-row:2 / 4;width:180px}.rewardToast{right:6%;top:10%}.playHotspot{left:37%;top:47%}.veCoin{font-size:.9rem}.coinRightBottom{left:97.2%;top:83.9%} }
 @media (max-width:600px){ .banner{height:520px;grid-template-rows:235px 285px;border-radius:17px}.visual{padding:0 4px}.visualStage{width:100%;height:230px}.veCoin{font-size:.72rem}.coinLeftTop{left:11.7%;top:18.9%;--coin-size:34px}.coinLeftMid{left:1.95%;top:52.4%;--coin-size:34px}.coinRightTop{left:80.7%;top:28.1%;--coin-size:34px}.coinRightUpper{left:71.55%;top:49.25%;--coin-size:33px}.coinRightCenter{left:87.75%;top:49.45%;--coin-size:33px}.coinRightInner{left:82.25%;top:60.55%;--coin-size:32px}.coinRightOuter{left:93.1%;top:62.1%;--coin-size:32px}.coinRightBottom{left:98%;top:85%;--coin-size:31px}.playHotspot{width:52px;height:52px;left:38%;top:45%}.rewardToast{right:4%;top:8%;font-size:.62rem}.content{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:13px 16px 16px}.kicker{font-size:.55rem}.index{width:31px;height:31px;font-size:.72rem}.stage{min-height:29px;padding-inline:8px}.banner h2{font-size:clamp(1.85rem,8.7vw,2.35rem);white-space:normal}.content>p{font-size:.79rem;line-height:1.43}.badges{gap:6px}.badges span{min-height:29px;font-size:.62rem}.cta{width:172px;min-height:43px;font-size:.78rem} }
-@media (prefers-reduced-motion:reduce){.veCoin{animation:none}.cta,.cta svg,.rewardToast{transition:none}}
+@media (prefers-reduced-motion:reduce){.veCoin,.playHotspot::after{animation:none}.cta,.cta svg,.rewardToast{transition:none}}
 
 
 /* Reference-style tablet/mobile layout: visual first, stacked content and full-width CTA. */
@@ -101,3 +103,181 @@
   .cta { min-height:60px; font-size:1rem; }
 }
 
+
+/* Final responsive polish: image stays large and VE overlays remain inside the artwork. */
+@media (max-width: 1024px) {
+  .banner { height:auto; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+  .visual {
+    order:1;
+    width:100%;
+    min-height:430px;
+    height:auto;
+    display:grid;
+    place-items:center;
+    padding:18px 18px 4px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(76,151,255,.11);
+  }
+  .visual::after { left:16%; right:16%; bottom:18px; }
+  .visualStage {
+    width:min(100%, 590px);
+    height:auto;
+    aspect-ratio:1448 / 1086;
+    flex:0 0 auto;
+  }
+  .visualImage { width:100%; height:100%; object-fit:contain; }
+  .content {
+    order:2;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+    padding:26px 28px 28px;
+    border-top:0;
+  }
+  .banner h2 { margin:0; font-size:clamp(2.55rem,6vw,3.35rem); line-height:1.02; white-space:normal; }
+  .content > p { width:100%; max-width:760px; margin:0; font-size:1rem; line-height:1.55; }
+  .badges { width:100%; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:0; }
+  .badges span { min-height:48px; justify-content:center; }
+  .cta { width:100%; min-height:60px; border-radius:14px; }
+  .rewardToast { right:5%; top:8%; }
+}
+@media (max-width: 600px) {
+  .visual { min-height:305px; padding:10px 4px 0; }
+  .visualStage { width:min(100%, 405px); }
+  .content { gap:13px; padding:20px 18px 22px; }
+  .kicker { gap:9px; font-size:.66rem; }
+  .index { width:42px; height:42px; font-size:.9rem; }
+  .stage { min-height:38px; padding-inline:11px; }
+  .banner h2 { font-size:clamp(2.1rem,10vw,2.7rem); }
+  .content > p { font-size:.92rem; }
+  .badges { gap:8px; }
+  .badges span { min-height:44px; padding-inline:6px; font-size:.74rem; }
+  .cta { min-height:56px; font-size:.98rem; }
+  .veCoin { font-size:.68rem; }
+  .coinLeftTop { left:12%; }
+  .coinLeftMid { left:6%; }
+  .coinRightTop { left:80%; }
+  .coinRightUpper { left:72%; }
+  .coinRightCenter { left:87%; }
+  .coinRightInner { left:82%; }
+  .coinRightOuter { left:92%; }
+  .coinRightBottom { left:94%; top:83%; }
+  .playHotspot { left:38%; top:47%; }
+}
+
+/* Desktop reference layout: content left, oversized media illustration right. */
+@media (min-width: 1025px) {
+  .banner {
+    height: 430px;
+    display: grid;
+    grid-template-columns: 38% 62%;
+    grid-template-rows: 1fr;
+    background:
+      radial-gradient(circle at 74% 50%, rgba(37,125,245,.15), transparent 34%),
+      linear-gradient(100deg,#07101e 0%,#07101b 46%,#08162b 100%);
+  }
+
+  .content {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 34px 34px 34px 46px;
+    border-top: 0;
+    background: transparent;
+  }
+  .kicker { margin: 0 0 22px; }
+  .index { width: 38px; height: 38px; }
+  .stage { min-height: 36px; padding-inline: 13px; }
+  .banner h2 { margin: 0; font-size: clamp(2.55rem, 3.05vw, 3.35rem); line-height: 1; white-space: nowrap; }
+  .content > p { max-width: 450px; margin: 22px 0 18px; font-size: .96rem; line-height: 1.55; }
+  .badges { display: flex; gap: 10px; margin: 0 0 20px; }
+  .badges span { min-height: 42px; padding-inline: 14px; font-size: .78rem; }
+  .cta { width: 330px; min-height: 56px; }
+
+  .visual {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 430px;
+    padding: 0 16px 0 0;
+    overflow: hidden;
+  }
+  .visual::after { left: 16%; right: 12%; bottom: 26px; }
+  .visualStage {
+    width: auto;
+    height: 408px;
+    aspect-ratio: 1448 / 1086;
+    transform: scaleX(1.25);
+    transform-origin: center;
+  }
+  .rewardToast { right: 2%; top: 8%; }
+}
+
+/* Final polish: VE labels sit on the upper face of each matching coin. */
+.visualStage { container-type: inline-size; }
+.veCoin {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  color: #ffffff;
+  font-size: 2.65cqw;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -.055em;
+  text-shadow: 0 0 8px rgba(255,255,255,.55), 0 0 14px rgba(33,137,255,.62);
+  transform: translate(-50%, -50%) rotate(var(--coin-rotate));
+  animation: veMicroFloat 3.2s ease-in-out infinite;
+  animation-delay: var(--coin-delay);
+}
+.coinLeftTop    { left:17.69%; top:24.3%; --coin-rotate:-16deg; }
+.coinLeftMid    { left:10.90%; top:42.7%; --coin-rotate:-15deg; }
+.coinRightTop   { left:78.60%; top:25.3%; --coin-rotate:12deg; }
+.coinRightUpper { left:73.55%; top:41.9%; --coin-rotate:0deg; }
+.coinRightCenter{ left:81.34%; top:42.8%; --coin-rotate:4deg; }
+.coinRightInner { left:86.13%; top:37.2%; --coin-rotate:10deg; }
+.coinRightOuter { left:89.96%; top:41.0%; --coin-rotate:14deg; }
+.coinRightBottom{ left:92.86%; top:65.2%; --coin-rotate:17deg; }
+@keyframes veMicroFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(var(--coin-rotate)); }
+  50% { transform: translate(-50%, -50%) translateY(-1.8px) rotate(var(--coin-rotate)); }
+}
+.previewed .veCoin { animation-duration: 2.7s; }
+
+/* Reduce artwork gutters and remove the visual/content separator on tablet/mobile. */
+@media (max-width: 1024px) {
+  .visual {
+    padding: 2px 0 0 !important;
+    border-bottom: 0 !important;
+  }
+  .visualStage {
+    width: min(100%, 650px);
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .visual { padding: 0 !important; min-height: 300px; }
+  .visualStage { width: min(100%, 430px); }
+  .veCoin { font-size: 2.55cqw; }
+}
+@media (min-width: 1025px) {
+  .visual { padding-right: 4px; }
+}
+
+/* Micro polish: artwork sits closer to the section edges without clipping. */
+@media (min-width: 1025px) {
+  .visual { padding: 0 !important; }
+  .visualStage { height: 420px; }
+}
+@media (max-width: 1024px) {
+  .visual { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .visualStage { width: min(100%, 670px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height: 290px; }
+  .visualStage { width: min(100%, 440px); }
+}

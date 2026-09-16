@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import usePointerParallax from '../../hooks/usePointerParallax'
 import { streakDays } from '../../data/rewards'
 import dailyVisual from '../../assets/daily-bonus-visual.webp'
-import dailyMobileVisual from '../../assets/daily-mobile-visual.png'
 import styles from './DailyBonusBanner.module.css'
 
 function TodayCard({ className = '' }) {
@@ -42,8 +41,6 @@ export default function DailyBonusBanner() {
   return (
     <article className={styles.banner} {...motion}>
       <div className={styles.visual}>
-        <img src={dailyMobileVisual} alt="Daily bonus gift, today bonus and seven-day streak" className={styles.mobileSummaryVisual} />
-
         <div className={styles.giftWrap}>
           <img src={dailyVisual} alt="Glowing reward gift box with VE coins" className={styles.giftImage} />
         </div>

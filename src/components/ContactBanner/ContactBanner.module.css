@@ -3,11 +3,11 @@
 .visual { position:relative; z-index:2; grid-row:1; display:flex; align-items:center; justify-content:center; gap:38px; min-width:0; padding:8px 32px 4px; }
 .agentWrap { position:relative; width:min(460px,46%); height:244px; display:grid; place-items:center; animation:softFloat 4.8s ease-in-out infinite; }
 .agentImage { width:100%; height:238px; object-fit:contain; transform:translate3d(var(--shift-x),var(--shift-y),0); filter:saturate(1) contrast(1.03) drop-shadow(0 20px 32px rgba(0,0,0,.34)); }
-@keyframes softFloat { 0%,100%{transform:translateY(4px) scale(1)}50%{transform:translateY(-8px) scale(1.01)} }
+@keyframes softFloat { 0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-3px) scale(1.004)} }
 .agentWrap::after { content:""; position:absolute; inset:16% 8% 8%; border-radius:50%; background:radial-gradient(circle, rgba(94,161,255,.18), transparent 62%); filter:blur(16px); opacity:.8; animation:glowBreath 3.4s ease-in-out infinite; pointer-events:none; z-index:0; }
 .agentWrap > * { position:relative; z-index:1; }
-@keyframes glowBreath { 0%,100%{opacity:.7; transform:scale(.98)}50%{opacity:1; transform:scale(1.02)} }
-.supportPanel { width:min(350px,35%); padding:14px; border:1px solid rgba(81,125,177,.22); border-radius:15px; background:linear-gradient(180deg,rgba(18,27,38,.94),rgba(11,18,27,.94)); box-shadow:0 16px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.03); animation:panelFloat 6.2s ease-in-out infinite; }
+@keyframes glowBreath { 0%,100%{opacity:.58; transform:scale(.99)}50%{opacity:.88; transform:scale(1.01)} }
+.supportPanel { width:min(350px,35%); padding:14px; border:1px solid rgba(81,125,177,.22); border-radius:15px; background:linear-gradient(180deg,rgba(18,27,38,.94),rgba(11,18,27,.94)); box-shadow:0 16px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.03); animation:none; }
 @keyframes panelFloat { 0%,100%{transform:translateY(-2px)}50%{transform:translateY(5px)} }
 .panelRow { display:flex; align-items:center; gap:10px; padding:6px 2px; }
 .iconBox { width:32px; height:32px; display:grid; place-items:center; flex:0 0 auto; border:1px solid rgba(79,139,204,.22); border-radius:9px; background:rgba(44,95,151,.08); color:#7eb6f1; }
@@ -141,4 +141,159 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mobileVisualImage { animation:none; }
+}
+
+/* Final responsive polish: use the real transparent illustration, not a pasted composite image. */
+@media (max-width: 1024px) {
+  .banner { height:auto; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+  .visual {
+    order:1;
+    width:100%;
+    min-height:430px;
+    height:auto;
+    display:grid;
+    place-items:center;
+    padding:16px 18px 2px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(101,142,190,.12);
+  }
+  .mobileVisualImage { display:none !important; }
+  .compactPanel { display:none; }
+  .agentWrap {
+    display:grid;
+    width:min(100%, 570px);
+    height:auto;
+    aspect-ratio:1448 / 1086;
+    margin:0 auto;
+  }
+  .agentImage { width:100%; height:100%; object-fit:contain; }
+  .content {
+    order:2;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+    padding:26px 28px 22px;
+    border-top:0;
+  }
+  .banner h2 { margin:0; font-size:clamp(2.45rem,5.8vw,3.25rem); line-height:1.02; white-space:normal; }
+  .content > p { width:100%; max-width:760px; margin:0; font-size:1rem; line-height:1.55; }
+  .cta { width:100%; min-height:60px; border-radius:14px; }
+  .mobilePanel {
+    order:3;
+    display:block;
+    width:calc(100% - 56px);
+    max-width:none;
+    margin:0 28px 28px;
+    padding:20px;
+    border-radius:17px;
+    animation:none;
+  }
+}
+@media (max-width: 600px) {
+  .visual { min-height:305px; padding:8px 2px 0; }
+  .agentWrap { width:min(100%, 405px); }
+  .content { gap:13px; padding:20px 18px 18px; }
+  .kicker { gap:9px; font-size:.66rem; }
+  .index { width:42px; height:42px; font-size:.9rem; }
+  .stage { min-height:38px; padding-inline:11px; }
+  .banner h2 { font-size:clamp(2.05rem,9.8vw,2.6rem); }
+  .content > p { font-size:.92rem; }
+  .cta { min-height:56px; font-size:.98rem; }
+  .mobilePanel { width:calc(100% - 36px); margin:0 18px 22px; padding:16px; }
+  .mobilePanel .panelRow { min-height:50px; gap:10px; }
+  .mobilePanel .iconBox { width:38px; height:38px; }
+  .mobilePanel .emailWrap strong { max-width:calc(100vw - 130px); font-size:.78rem; }
+  .mobilePanel .copyButton, .mobilePanel .textLink { min-height:48px; }
+}
+
+/* Desktop reference layout: content, illustration, support panel in one horizontal row. */
+@media (min-width: 1025px) {
+  .banner {
+    height: 430px;
+    display: grid;
+    grid-template-columns: 32% 68%;
+    grid-template-rows: 1fr;
+    background:
+      radial-gradient(circle at 55% 45%, rgba(60,115,177,.14), transparent 32%),
+      linear-gradient(100deg,#0b1119 0%,#0c1421 48%,#0d1c31 100%);
+  }
+
+  .content {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 34px 30px 34px 42px;
+    border-top: 0;
+    background: transparent;
+    border-right: 1px solid rgba(101,142,190,.08);
+  }
+  .kicker { margin: 0 0 22px; }
+  .index { width: 38px; height: 38px; }
+  .stage { min-height: 36px; padding-inline: 13px; }
+  .banner h2 { margin: 0; font-size: clamp(2.35rem, 2.7vw, 3rem); line-height: 1; white-space: normal; }
+  .content > p { max-width: 390px; margin: 22px 0 20px; font-size: .94rem; line-height: 1.55; }
+  .cta { width: 100%; max-width: 330px; min-height: 56px; }
+
+  .visual {
+    grid-column: 2;
+    grid-row: 1;
+    height: 430px;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+  .agentWrap {
+    width: 100%;
+    height: 430px;
+    padding: 18px 10px 4px;
+    border-right: 1px solid rgba(101,142,190,.08);
+  }
+  .agentImage { width: 100%; height: 395px; }
+  .compactPanel {
+    align-self: center;
+    justify-self: center;
+    width: calc(100% - 40px);
+    max-width: 390px;
+    padding: 18px;
+    border-radius: 17px;
+  }
+  .compactPanel .panelRow { min-height: 50px; }
+  .compactPanel .iconBox { width: 38px; height: 38px; border-radius: 50%; }
+  .compactPanel .panelRow strong { font-size: .92rem; }
+  .compactPanel .emailWrap small { font-size: .68rem; }
+  .compactPanel .emailWrap strong { max-width: 245px; font-size: .73rem; }
+  .compactPanel .copyButton { min-height: 44px; font-size: .78rem; }
+  .compactPanel .textLink { min-height: 44px; font-size: .78rem; }
+  .mobilePanel { display: none !important; }
+}
+
+/* Final responsive artwork cleanup. */
+@media (max-width: 1024px) {
+  .visual { padding: 4px 0 0 !important; border-bottom: 0 !important; }
+  .agentWrap { width: min(100%, 610px); }
+}
+@media (max-width: 600px) {
+  .visual { padding: 0 !important; min-height: 300px; }
+  .agentWrap { width: min(100%, 430px); }
+}
+
+/* Micro polish: larger support illustration with tighter vertical gutters. */
+@media (min-width: 1025px) {
+  .agentWrap { padding: 4px 8px 0; }
+  .agentImage { height: 420px; }
+}
+@media (max-width: 1024px) {
+  .visual { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .agentWrap { width: min(100%, 630px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height: 290px; }
+  .agentWrap { width: min(100%, 440px); }
 }

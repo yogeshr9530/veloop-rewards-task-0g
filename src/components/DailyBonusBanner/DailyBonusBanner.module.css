@@ -2,11 +2,15 @@
 .banner::before { content:""; position:absolute; inset:0; z-index:0; background:radial-gradient(circle,rgba(237,174,54,.08) 0 1px,transparent 1.5px) 0 0/55px 55px; mask-image:linear-gradient(180deg,#000 0%,#000 58%,transparent 94%); opacity:.6; }
 .visual { position:relative; z-index:2; grid-row:1; display:flex; align-items:center; justify-content:center; gap:18px; min-width:0; padding:5px 24px 0; }
 .giftWrap { width:min(430px,38%); height:245px; display:grid; place-items:center; animation:giftFloat 5.2s ease-in-out infinite; }
+.giftWrap{position:relative}
+.giftWrap::after{content:"";position:absolute;inset:15% 10% 4%;z-index:0;border-radius:50%;background:radial-gradient(circle,rgba(255,176,44,.18),transparent 64%);filter:blur(16px);animation:giftGlow 3.8s ease-in-out infinite;pointer-events:none}
+.giftWrap>*{position:relative;z-index:1}
+@keyframes giftGlow{0%,100%{opacity:.48;transform:scale(.99)}50%{opacity:.84;transform:scale(1.015)}}
 .giftImage { width:100%; height:242px; object-fit:contain; transform:translate3d(var(--shift-x),var(--shift-y),0); filter:saturate(.98) contrast(1.03) drop-shadow(0 20px 30px rgba(0,0,0,.34)); }
-@keyframes giftFloat { 0%,100%{transform:translateY(3px) rotate(-.2deg)}50%{transform:translateY(-8px) rotate(.5deg)} }
+@keyframes giftFloat { 0%,100%{transform:translateY(1px) rotate(-.08deg)}50%{transform:translateY(-3px) rotate(.18deg)} }
 .todayCard,.streak { position:relative; z-index:3; border:1px solid rgba(215,154,43,.25); border-radius:14px; background:linear-gradient(180deg,rgba(32,27,17,.96),rgba(17,16,12,.97)); box-shadow:0 16px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.025); }
-.todayCard { width:190px; padding:16px 14px; animation:sideFloat 6.1s ease-in-out infinite; }
-.streak { width:300px; padding:15px 14px; animation:sideFloat 6.6s ease-in-out .4s infinite; }
+.todayCard { width:190px; padding:16px 14px; animation:none; }
+.streak { width:300px; padding:15px 14px; animation:none; }
 @keyframes sideFloat { 0%,100%{transform:translateY(-2px)}50%{transform:translateY(5px)} }
 .todayCard small,.streak>small { display:block; color:#b6924a; font-size:.6rem; font-weight:780; letter-spacing:.05em; }
 .todayCard strong { display:block; margin:9px 0 6px; color:#f6e2b1; font-size:1.45rem; line-height:1; letter-spacing:-.035em; }
@@ -27,7 +31,7 @@
 
 @media (max-width:880px){ .banner{height:540px;grid-template-rows:300px 240px}.visual{gap:9px;padding-inline:12px}.giftWrap{width:40%;height:290px}.giftImage{height:285px}.todayCard{width:160px;padding:13px 10px}.streak{width:270px;padding:12px 10px}.content{grid-template-columns:1fr auto;grid-template-rows:auto auto auto;gap:8px 18px;padding:14px 24px 18px}.kicker{grid-column:1;grid-row:1}.banner h2{grid-column:1;grid-row:2;font-size:clamp(1.95rem,5.2vw,2.6rem);white-space:normal}.content>p{grid-column:1;grid-row:3;align-self:start;font-size:.84rem}.cta{grid-column:2;grid-row:1 / 4;width:170px} }
 @media (max-width:600px){ .banner{height:520px;grid-template-rows:260px 260px;border-radius:17px}.visual{gap:4px;padding:4px}.giftWrap{width:44%;height:250px}.giftImage{height:246px}.todayCard{width:25%;padding:8px 6px;border-radius:10px}.streak{width:31%;padding:8px 5px;border-radius:10px}.todayCard small,.streak>small{font-size:.44rem}.todayCard strong{margin:5px 0 3px;font-size:.9rem}.todayCard span{font-size:.46rem;gap:3px}.days{gap:0;margin:6px 0}.days b{font-size:.32rem;margin-bottom:2px}.days span{width:16px;height:16px;font-size:.35rem}.days svg{width:8px}.streak>strong{font-size:.52rem}.streak p{font-size:.42rem}.content{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:12px 16px 15px}.kicker{font-size:.55rem}.index{width:31px;height:31px;font-size:.72rem}.banner h2{font-size:clamp(1.78rem,8.3vw,2.25rem);white-space:normal}.banner h2 span{display:block;margin:3px 0 0}.content>p{font-size:.78rem;line-height:1.43}.cta{width:165px;min-height:43px;font-size:.76rem} }
-@media (prefers-reduced-motion:reduce){.giftWrap,.todayCard,.streak{animation:none}.cta{transition:none}}
+@media (prefers-reduced-motion:reduce){.giftWrap,.giftWrap::after,.todayCard,.streak{animation:none}.cta{transition:none}}
 
 
 .mobileDetails { display:none; }
@@ -175,4 +179,187 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mobileSummaryVisual { animation:none; }
+}
+
+/* Final responsive polish: real gift illustration + actual cards remain in normal document flow. */
+@media (max-width: 1024px) {
+  .banner { height:auto; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+  .visual {
+    order:1;
+    width:100%;
+    min-height:430px;
+    height:auto;
+    display:grid;
+    place-items:center;
+    padding:16px 18px 2px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(215,154,43,.12);
+  }
+  .mobileSummaryVisual { display:none !important; }
+  .summaryToday, .summaryStreak { display:none; }
+  .giftWrap {
+    display:grid;
+    width:min(100%, 570px);
+    height:auto;
+    aspect-ratio:1448 / 1086;
+    place-items:center;
+  }
+  .giftImage { width:100%; height:100%; object-fit:contain; }
+  .content {
+    order:2;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+    padding:26px 28px 22px;
+    border-top:0;
+  }
+  .banner h2 { margin:0; font-size:clamp(2.4rem,5.6vw,3.2rem); line-height:1.02; white-space:normal; }
+  .content > p { width:100%; max-width:760px; margin:0; font-size:1rem; line-height:1.55; }
+  .cta { width:100%; min-height:60px; border-radius:14px; justify-content:center; }
+  .mobileDetails {
+    order:3;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    width:calc(100% - 56px);
+    margin:0 28px 28px;
+  }
+  .mobileDetails .todayCard,
+  .mobileDetails .streak { width:100%; max-width:none; animation:none; border-radius:17px; }
+  .detailToday { min-height:150px; padding:22px; }
+  .detailStreak { padding:22px; }
+  .detailStreak .days { grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px; }
+  .detailStreak .days span { width:clamp(34px,5vw,42px); height:clamp(34px,5vw,42px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height:305px; padding:8px 2px 0; }
+  .giftWrap { width:min(100%, 405px); }
+  .content { gap:13px; padding:20px 18px 18px; }
+  .kicker { gap:9px; font-size:.66rem; }
+  .index { width:42px; height:42px; font-size:.9rem; }
+  .banner h2 { font-size:clamp(2rem,9.5vw,2.55rem); }
+  .content > p { font-size:.92rem; }
+  .cta { min-height:56px; font-size:.98rem; }
+  .mobileDetails { width:calc(100% - 36px); margin:0 18px 22px; gap:14px; }
+  .detailToday { min-height:138px; padding:18px; }
+  .detailToday strong { font-size:1.65rem; }
+  .detailStreak { padding:18px 14px 20px; }
+  .detailStreak .days { gap:3px; }
+  .detailStreak .days b { font-size:.54rem; }
+  .detailStreak .days span { width:clamp(28px,8vw,34px); height:clamp(28px,8vw,34px); font-size:.64rem; }
+  .detailStreak > strong { font-size:1rem; }
+  .detailStreak p { font-size:.8rem; }
+}
+
+/* Desktop reference layout: content left, gift center, reward cards right. */
+@media (min-width: 1025px) {
+  .banner {
+    height: 430px;
+    display: grid;
+    grid-template-columns: 32% 68%;
+    grid-template-rows: 1fr;
+    background:
+      radial-gradient(circle at 60% 47%, rgba(221,139,20,.2), transparent 34%),
+      linear-gradient(100deg,#171108 0%,#171109 48%,#1b1308 100%);
+  }
+
+  .content {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 34px 30px 34px 42px;
+    border-top: 0;
+    background: transparent;
+    border-right: 1px solid rgba(215,154,43,.08);
+  }
+  .kicker { margin: 0 0 22px; }
+  .index { width: 38px; height: 38px; }
+  .stage { min-height: 36px; display: inline-flex; align-items: center; }
+  .banner h2 { margin: 0; font-size: clamp(2.35rem, 2.65vw, 2.95rem); line-height: 1.02; white-space: normal; }
+  .banner h2 span { display: block; margin: 4px 0 0; }
+  .content > p { max-width: 385px; margin: 22px 0 20px; font-size: .94rem; line-height: 1.55; }
+  .cta { width: 100%; max-width: 325px; min-height: 56px; }
+
+  .visual {
+    grid-column: 2;
+    grid-row: 1;
+    height: 430px;
+    display: grid;
+    grid-template-columns: 45% 24% 31%;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+  .giftWrap {
+    width: 100%;
+    height: 430px;
+    padding: 8px 6px 0;
+    border-right: 1px solid rgba(215,154,43,.08);
+  }
+  .giftImage { width: 100%; height: 420px; }
+  .summaryToday,
+  .summaryStreak { display: block; }
+  .todayCard,
+  .streak { animation: none; }
+  .summaryToday {
+    align-self: center;
+    justify-self: center;
+    width: calc(100% - 30px);
+    min-height: 320px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .summaryToday small { font-size: .72rem; }
+  .summaryToday strong { margin: 16px 0 12px; font-size: 1.75rem; }
+  .summaryToday span { font-size: .84rem; }
+
+  .summaryStreak {
+    align-self: center;
+    justify-self: center;
+    width: calc(100% - 30px);
+    min-height: 320px;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .summaryStreak > small { font-size: .72rem; }
+  .summaryStreak .days { gap: 5px; margin: 18px 0; }
+  .summaryStreak .days b { font-size: .58rem; margin-bottom: 7px; }
+  .summaryStreak .days span { width: 30px; height: 30px; font-size: .58rem; }
+  .summaryStreak > strong { font-size: 1rem; }
+  .summaryStreak p { margin-top: 8px; font-size: .76rem; }
+
+  .mobileDetails { display: none !important; }
+}
+
+/* Final responsive artwork cleanup. */
+@media (max-width: 1024px) {
+  .visual { padding: 4px 0 0 !important; border-bottom: 0 !important; }
+  .giftWrap { width: min(100%, 610px); }
+}
+@media (max-width: 600px) {
+  .visual { padding: 0 !important; min-height: 300px; }
+  .giftWrap { width: min(100%, 430px); }
+}
+
+/* Micro polish: gift artwork uses more vertical space with minimal gutters. */
+@media (min-width: 1025px) {
+  .giftWrap { padding: 0 !important; }
+  .giftImage { height: 430px; }
+}
+@media (max-width: 1024px) {
+  .visual { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .giftWrap { width: min(100%, 630px); }
+}
+@media (max-width: 600px) {
+  .visual { min-height: 290px; }
+  .giftWrap { width: min(100%, 440px); }
 }
