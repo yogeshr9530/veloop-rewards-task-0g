@@ -255,3 +255,23 @@
   0%,100% { opacity:.62; transform:scale(.995); }
   50% { opacity:.78; transform:scale(1.008); }
 }
+
+/* Real-device mobile animation support for touch screens. */
+@keyframes contactTouchFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -2.1px, 0) scale(1.002); }
+}
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+  .agentWrap {
+    animation-name: contactTouchFloat;
+    animation-duration: 4.4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agentWrap { animation: none !important; }
+}

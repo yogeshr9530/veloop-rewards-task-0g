@@ -5,6 +5,7 @@ export default function usePointerParallax() {
 
   const onPointerMove = useCallback((event) => {
     const element = ref.current
+    // Touch devices use the automatic CSS micro-animations defined per banner.
     if (!element || event.pointerType === 'touch') return
 
     const bounds = element.getBoundingClientRect()

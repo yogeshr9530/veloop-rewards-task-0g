@@ -363,3 +363,36 @@
   .coinRightOuter  { left:88.8%; top:41.8%; }
   .coinRightBottom { left:91.0%; top:63.5%; }
 }
+
+/* Real-device mobile animation support: make coin/play motion visible on coarse touch screens
+   without depending on mouse/pointer parallax. */
+@keyframes watchTouchCoinFloat {
+  0%, 100% { transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(var(--coin-rotate)); }
+  50% { transform: translate(-50%, -50%) translate3d(0, -1.6px, 0) rotate(var(--coin-rotate)); }
+}
+@keyframes watchTouchPlayBreath {
+  0%, 100% { transform: scale(.98); opacity: .24; }
+  50% { transform: scale(1.045); opacity: .52; }
+}
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+  .veCoin {
+    animation-name: watchTouchCoinFloat;
+    animation-duration: 2.9s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .playHotspot::after {
+    animation-name: watchTouchPlayBreath;
+    animation-duration: 2.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform, opacity;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .veCoin, .playHotspot::after { animation: none !important; }
+}

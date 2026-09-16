@@ -588,3 +588,48 @@
     top: .9cqw;
   }
 }
+
+/* Real-device mobile animation support: touch screens do not receive pointer parallax,
+   so keep the leaderboard motion visible with a small automatic CSS animation. */
+@keyframes leaderboardTouchBadgeFloat {
+  0%, 100% { transform: translate(-50%, -50%) translate3d(0, 0, 0); }
+  50% { transform: translate(-50%, -50%) translate3d(0, -1.5px, 0); }
+}
+@keyframes leaderboardTouchCopyFloat {
+  0%, 100% { transform: translateX(-50%) translate3d(0, 0, 0); }
+  50% { transform: translateX(-50%) translate3d(0, -1.8px, 0); }
+}
+@keyframes leaderboardTouchTwinkle {
+  0%, 100% { opacity: .42; transform: scale(.92); }
+  50% { opacity: .82; transform: scale(1.08); }
+}
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+  .floatBadge {
+    animation-name: leaderboardTouchBadgeFloat;
+    animation-duration: 2.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .floatCopy {
+    animation-name: leaderboardTouchCopyFloat;
+    animation-duration: 2.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .sparkles i {
+    animation-name: leaderboardTouchTwinkle;
+    animation-duration: 3.1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floatBadge, .floatCopy, .sparkles i { animation: none !important; }
+}
