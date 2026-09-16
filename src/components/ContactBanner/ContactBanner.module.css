@@ -275,3 +275,64 @@
 @media (prefers-reduced-motion: reduce) {
   .agentWrap { animation: none !important; }
 }
+
+/* =========================================================
+   FINAL DOCUMENT-COMPLIANT RESPONSIVE ARRANGEMENT
+   ========================================================= */
+@media (min-width: 1025px) {
+  .banner {
+    width: 100% !important;
+    height: 430px !important;
+    min-height: 410px !important;
+    max-height: 450px !important;
+    grid-template-columns: 40% 60% !important;
+  }
+  .agentWrap { width: min(72%, 500px) !important; }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner {
+    width: 100% !important;
+    height: clamp(450px, 52vw, 480px) !important;
+    min-height: 450px !important;
+    max-height: 480px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 43% 57% !important;
+    overflow: hidden !important;
+  }
+  .visual { grid-column: 1 !important; grid-row: 1 !important; height: 100% !important; padding: 0 !important; }
+  .agentWrap { width: min(62%, 400px) !important; max-height: 100% !important; }
+  .content { grid-column: 1 !important; grid-row: 2 !important; justify-content: center !important; padding: 12px 26px 16px !important; }
+  .kicker { margin-bottom: 8px !important; }
+  .banner h2 { font-size: clamp(2rem, 4.8vw, 2.5rem) !important; }
+  .content > p { margin: 9px 0 11px !important; font-size: .88rem !important; line-height: 1.42 !important; }
+  .cta { width: 100% !important; min-height: 50px !important; }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    width: 100% !important;
+    height: clamp(425px, 115vw, 450px) !important;
+    min-height: 425px !important;
+    max-height: 450px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 42% 58% !important;
+    overflow: hidden !important;
+  }
+  .visual { grid-column: 1 !important; grid-row: 1 !important; height: 100% !important; padding: 0 !important; }
+  .agentWrap { width: min(68%, 285px) !important; max-height: 100% !important; }
+  .content { grid-column: 1 !important; grid-row: 2 !important; justify-content: center !important; padding: 10px 16px 13px !important; }
+  .kicker { margin-bottom: 6px !important; }
+  .index { width: 34px !important; height: 34px !important; }
+  .stage { min-height: 32px !important; }
+  .banner h2 { font-size: clamp(1.72rem, 8.2vw, 2.05rem) !important; line-height: 1.02 !important; }
+  .content > p { margin: 7px 0 9px !important; font-size: .79rem !important; line-height: 1.38 !important; }
+  .cta { min-height: 46px !important; }
+}
+
+@keyframes contactTouchFloat {
+  0%,100% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(0,-1.4px,0) scale(1.001); }
+}

@@ -633,3 +633,107 @@
 @media (prefers-reduced-motion: reduce) {
   .floatBadge, .floatCopy, .sparkles i { animation: none !important; }
 }
+
+/* =========================================================
+   FINAL DOCUMENT-COMPLIANT RESPONSIVE ARRANGEMENT
+   Desktop: 410–450px | Tablet: 380–540px | Mobile: 330–520px
+   ========================================================= */
+@media (min-width: 1025px) {
+  .banner {
+    width: 100% !important;
+    height: 430px !important;
+    min-height: 410px !important;
+    max-height: 450px !important;
+  }
+  .visualStage { height: 370px !important; max-width: 90% !important; }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .banner {
+    width: 100% !important;
+    height: clamp(470px, 55vw, 500px) !important;
+    min-height: 470px !important;
+    max-height: 500px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 46% 54% !important;
+    overflow: hidden !important;
+  }
+  .visual {
+    grid-row: 1 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  .visualStage {
+    height: calc(100% - 4px) !important;
+    width: auto !important;
+    max-width: 88% !important;
+    transform: none !important;
+  }
+  .content {
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    padding: 12px 24px 15px !important;
+  }
+  .kicker { margin: 0 0 2px !important; }
+  .banner h2 { font-size: clamp(2rem, 4.8vw, 2.45rem) !important; line-height: 1 !important; }
+  .content > p { margin: 2px 0 !important; font-size: .85rem !important; line-height: 1.4 !important; }
+  .prize { min-height: 34px !important; margin: 1px 0 !important; }
+  .cta { width: 220px !important; min-height: 46px !important; }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    width: 100% !important;
+    height: clamp(455px, 122vw, 480px) !important;
+    min-height: 455px !important;
+    max-height: 480px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 44% 56% !important;
+    overflow: hidden !important;
+  }
+  .visual {
+    grid-row: 1 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  .visualStage {
+    height: calc(100% - 3px) !important;
+    width: auto !important;
+    max-width: 90% !important;
+    transform: none !important;
+  }
+  .content {
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 9px 16px 12px !important;
+  }
+  .kicker { margin: 0 !important; }
+  .index { width: 34px !important; height: 34px !important; }
+  .stage { min-height: 32px !important; }
+  .banner h2 { font-size: clamp(1.72rem, 8.3vw, 2.08rem) !important; line-height: 1 !important; }
+  .content > p { margin: 1px 0 !important; font-size: .77rem !important; line-height: 1.35 !important; }
+  .prize { min-height: 32px !important; margin: 0 !important; font-size: .66rem !important; }
+  .cta { width: 100% !important; min-height: 44px !important; }
+}
+
+/* Motion is intentionally small so animated elements never escape the compact banner. */
+@keyframes leaderboardTouchBadgeFloat {
+  0%,100% { transform: translate(-50%,-50%) translate3d(0,0,0); }
+  50% { transform: translate(-50%,-50%) translate3d(0,-1px,0); }
+}
+@keyframes leaderboardTouchCopyFloat {
+  0%,100% { transform: translateX(-50%) translate3d(0,0,0); }
+  50% { transform: translateX(-50%) translate3d(0,-1.2px,0); }
+}
