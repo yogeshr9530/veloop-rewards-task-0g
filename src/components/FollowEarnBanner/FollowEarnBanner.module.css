@@ -1025,3 +1025,47 @@
 @media (prefers-reduced-motion:reduce) {
   .phoneImage,.rewardCard { animation:none !important; transform:none !important; }
 }
+
+/* =========================================================
+   FINAL MOTION VISIBILITY FIX — Section 04
+   `translate` stays animatable even where legacy mobile rules lock
+   `transform:none !important`.  Phone motion is now clearly visible
+   while staying inside its own flow zone; reward card gets a crisp pulse.
+   ========================================================= */
+.phoneImage {
+  animation: followFeelPhone 2.2s cubic-bezier(.4,0,.2,1) infinite !important;
+  will-change: translate;
+}
+.rewardCard {
+  animation: followFeelCard 2.7s ease-in-out infinite !important;
+  will-change: translate, box-shadow;
+}
+.cta svg {
+  animation: followArrowFeel 2.2s ease-in-out infinite;
+}
+@keyframes followFeelPhone {
+  0%, 14%, 100% { translate: 0 0; }
+  45% { translate: 0 -7px; }
+  63% { translate: 0 -3px; }
+}
+@keyframes followFeelCard {
+  0%,100% { translate:0 0; box-shadow:0 17px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.03); }
+  50% { translate:0 -2px; box-shadow:0 18px 38px rgba(0,0,0,.27),0 0 20px rgba(128,80,235,.18),inset 0 1px 0 rgba(255,255,255,.04); }
+}
+@keyframes followArrowFeel {
+  0%,20%,100% { translate:0 0; }
+  48% { translate:4px 0; }
+  66% { translate:1px 0; }
+}
+@media (max-width:600px) {
+  .phoneImage { animation-duration:2.45s !important; }
+  @keyframes followFeelPhone {
+    0%, 14%, 100% { translate: 0 0; }
+    45% { translate: 0 -5px; }
+    63% { translate: 0 -2px; }
+  }
+  .rewardCard { animation-duration:2.9s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .phoneImage,.rewardCard,.cta svg { animation:none !important; translate:0 0 !important; }
+}

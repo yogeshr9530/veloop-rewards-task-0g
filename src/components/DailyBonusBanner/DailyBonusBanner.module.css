@@ -1187,3 +1187,60 @@
 @media (prefers-reduced-motion:reduce) {
   .giftImage,.summaryToday,.summaryStreak { animation:none !important; transform:none !important; }
 }
+
+/* =========================================================
+   FINAL MOTION VISIBILITY FIX — Section 05
+   Make the gift movement obvious without allowing it to cross into
+   the reward cards. The cards keep their layout and pulse in-place.
+   ========================================================= */
+.giftImage {
+  animation: dailyFeelGift 2.2s cubic-bezier(.4,0,.2,1) infinite !important;
+  will-change: translate;
+}
+.summaryToday,
+.summaryStreak {
+  animation: dailyFeelCard 2.8s ease-in-out infinite !important;
+  will-change: box-shadow;
+}
+.summaryStreak { animation-delay:.32s !important; }
+.summaryToday span i {
+  animation: dailyDotFeel 1.55s ease-in-out infinite;
+}
+.cta svg {
+  animation: dailyGiftIconFeel 2.2s ease-in-out infinite;
+}
+@keyframes dailyFeelGift {
+  0%, 14%, 100% { translate:0 0; }
+  45% { translate:0 -7px; }
+  63% { translate:0 -3px; }
+}
+@keyframes dailyFeelCard {
+  0%,100% { box-shadow:0 13px 28px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.03); }
+  50% { box-shadow:0 16px 34px rgba(0,0,0,.26),0 0 20px rgba(255,176,44,.18),inset 0 1px 0 rgba(255,255,255,.04); }
+}
+@keyframes dailyDotFeel {
+  0%,100% { scale:1; opacity:.72; }
+  50% { scale:1.35; opacity:1; }
+}
+@keyframes dailyGiftIconFeel {
+  0%,20%,100% { rotate:0deg; }
+  46% { rotate:-8deg; }
+  61% { rotate:7deg; }
+  74% { rotate:0deg; }
+}
+@media (max-width:600px) {
+  .giftImage { animation-duration:2.45s !important; }
+  @keyframes dailyFeelGift {
+    0%, 14%, 100% { translate:0 0; }
+    45% { translate:0 -5px; }
+    63% { translate:0 -2px; }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .giftImage,.summaryToday,.summaryStreak,.summaryToday span i,.cta svg {
+    animation:none !important;
+    translate:0 0 !important;
+    scale:1 !important;
+    rotate:0deg !important;
+  }
+}

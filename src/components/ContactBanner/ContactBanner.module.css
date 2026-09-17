@@ -681,3 +681,38 @@
 @media (prefers-reduced-motion:reduce) {
   .agentImage { animation:none !important; transform:none !important; }
 }
+
+/* =========================================================
+   FINAL MOTION VISIBILITY FIX — Section 03
+   Use the individual `translate` property so earlier defensive
+   `transform:none !important` mobile rules cannot suppress motion.
+   Motion is upward-only to protect the lower artwork edge.
+   ========================================================= */
+.agentImage {
+  animation: contactFeelMotion 2.35s cubic-bezier(.4,0,.2,1) infinite !important;
+  will-change: translate;
+}
+.cta svg {
+  animation: contactIconFeel 2.35s ease-in-out infinite;
+}
+@keyframes contactFeelMotion {
+  0%, 16%, 100% { translate: 0 0; }
+  46% { translate: 0 -6px; }
+  66% { translate: 0 -3px; }
+}
+@keyframes contactIconFeel {
+  0%, 22%, 100% { translate: 0 0; }
+  48% { translate: 0 -2px; }
+  64% { translate: 0 0; }
+}
+@media (max-width:600px) {
+  .agentImage { animation-duration:2.55s !important; }
+  @keyframes contactFeelMotion {
+    0%, 16%, 100% { translate: 0 0; }
+    46% { translate: 0 -4px; }
+    66% { translate: 0 -2px; }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .agentImage,.cta svg { animation:none !important; translate:0 0 !important; }
+}
