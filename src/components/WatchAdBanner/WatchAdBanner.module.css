@@ -579,3 +579,28 @@
 @media (prefers-reduced-motion:reduce) {
   .veCoin,.playHotspot::after { animation:none !important; }
 }
+
+/* =========================================================
+   FINAL SMOOTH MOTION PASS — slower coin drift and play pulse.
+   ========================================================= */
+.veCoin {
+  animation: watchSmoothCoin 4.9s ease-in-out infinite !important;
+}
+.playHotspot::after {
+  animation: watchSmoothPlay 4.3s ease-in-out infinite !important;
+}
+@keyframes watchSmoothCoin {
+  0%,100% { transform:translate(-50%,-50%) translate3d(0,0,0) rotate(var(--coin-rotate)) scale(1); }
+  50% { transform:translate(-50%,-50%) translate3d(0,-3px,0) rotate(var(--coin-rotate)) scale(1.012); }
+}
+@keyframes watchSmoothPlay {
+  0%,100% { transform:scale(.96); opacity:.24; }
+  50% { transform:scale(1.06); opacity:.58; }
+}
+@media (max-width:600px) {
+  .veCoin { animation-duration:5.2s !important; }
+  .playHotspot::after { animation-duration:4.7s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .veCoin,.playHotspot::after { animation:none !important; }
+}

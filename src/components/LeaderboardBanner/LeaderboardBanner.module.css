@@ -857,3 +857,34 @@
 @media (prefers-reduced-motion:reduce) {
   .floatBadge,.floatCopy,.sparkles i { animation:none !important; }
 }
+
+/* =========================================================
+   FINAL SMOOTH MOTION PASS — slower, premium movement.
+   ========================================================= */
+.floatBadge {
+  animation: leaderSmoothBadge 4.8s ease-in-out infinite !important;
+}
+.floatCopy {
+  animation: leaderSmoothCopy 4.8s ease-in-out infinite !important;
+}
+.sparkles i {
+  animation: leaderSmoothTwinkle 5.2s ease-in-out infinite !important;
+}
+@keyframes leaderSmoothBadge {
+  0%,100% { transform:translate(-50%,-50%) translate3d(0,0,0); }
+  50% { transform:translate(-50%,-50%) translate3d(0,-3px,0); }
+}
+@keyframes leaderSmoothCopy {
+  0%,100% { transform:translateX(-50%) translate3d(0,0,0); }
+  50% { transform:translateX(-50%) translate3d(0,-3.2px,0); }
+}
+@keyframes leaderSmoothTwinkle {
+  0%,100% { opacity:.42; transform:scale(.94); }
+  50% { opacity:.9; transform:scale(1.08); }
+}
+@media (max-width:600px) {
+  .floatBadge,.floatCopy { animation-duration:5.1s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .floatBadge,.floatCopy,.sparkles i { animation:none !important; }
+}

@@ -1244,3 +1244,51 @@
     rotate:0deg !important;
   }
 }
+
+/* =========================================================
+   FINAL SMOOTH MOTION PASS — slower gift and reward-card movement.
+   ========================================================= */
+.giftImage {
+  animation: dailySmoothGift 5.2s ease-in-out infinite !important;
+  will-change:translate;
+}
+.summaryToday,
+.summaryStreak {
+  animation: dailySmoothCard 5.8s ease-in-out infinite !important;
+  will-change:box-shadow;
+}
+.summaryStreak { animation-delay:.45s !important; }
+.summaryToday span i {
+  animation: dailySmoothDot 3.8s ease-in-out infinite !important;
+}
+.cta svg {
+  animation: dailySmoothIcon 4.6s ease-in-out infinite !important;
+}
+@keyframes dailySmoothGift {
+  0%,100% { translate:0 0; }
+  50% { translate:0 -4px; }
+}
+@keyframes dailySmoothCard {
+  0%,100% { box-shadow:0 13px 28px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.03); }
+  50% { box-shadow:0 16px 32px rgba(0,0,0,.24),0 0 14px rgba(255,176,44,.11),inset 0 1px 0 rgba(255,255,255,.04); }
+}
+@keyframes dailySmoothDot {
+  0%,100% { scale:1; opacity:.76; }
+  50% { scale:1.18; opacity:1; }
+}
+@keyframes dailySmoothIcon {
+  0%,100% { rotate:0deg; }
+  50% { rotate:5deg; }
+}
+@media (max-width:600px) {
+  .giftImage { animation-duration:5.5s !important; }
+  .summaryToday,.summaryStreak { animation-duration:6s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .giftImage,.summaryToday,.summaryStreak,.summaryToday span i,.cta svg {
+    animation:none !important;
+    translate:0 0 !important;
+    scale:1 !important;
+    rotate:0deg !important;
+  }
+}

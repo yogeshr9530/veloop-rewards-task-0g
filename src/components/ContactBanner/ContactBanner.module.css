@@ -716,3 +716,28 @@
 @media (prefers-reduced-motion:reduce) {
   .agentImage,.cta svg { animation:none !important; translate:0 0 !important; }
 }
+
+/* =========================================================
+   FINAL SMOOTH MOTION PASS — gentle support illustration float.
+   ========================================================= */
+.agentImage {
+  animation: contactSmoothFloat 5.2s ease-in-out infinite !important;
+  will-change:translate;
+}
+.cta svg {
+  animation: contactSmoothIcon 4.6s ease-in-out infinite !important;
+}
+@keyframes contactSmoothFloat {
+  0%,100% { translate:0 0; }
+  50% { translate:0 -4px; }
+}
+@keyframes contactSmoothIcon {
+  0%,100% { translate:0 0; }
+  50% { translate:0 -1.5px; }
+}
+@media (max-width:600px) {
+  .agentImage { animation-duration:5.5s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .agentImage,.cta svg { animation:none !important; translate:0 0 !important; }
+}
