@@ -657,3 +657,27 @@
   .content > p { font-size: .74rem !important; line-height: 1.3 !important; }
   .cta { min-height: 42px !important; }
 }
+
+/* =========================================================
+   REVIEWER ANIMATION PASS — visible but safe support illustration motion.
+   The image only moves upward, preventing bottom-edge overlap/cropping.
+   ========================================================= */
+.agentImage {
+  animation: contactSharpFloat 2.8s cubic-bezier(.45,0,.25,1) infinite !important;
+  will-change: transform,filter;
+}
+@keyframes contactSharpFloat {
+  0%,100% { transform:translate3d(0,0,0) !important; filter:saturate(1) brightness(1); }
+  48% { transform:translate3d(0,-3px,0) !important; filter:saturate(1.03) brightness(1.025); }
+  64% { transform:translate3d(0,-2px,0) !important; filter:saturate(1.02) brightness(1.015); }
+}
+@media (max-width:430px) {
+  .agentImage { animation:contactSharpFloatMobile 3s cubic-bezier(.45,0,.25,1) infinite !important; }
+  @keyframes contactSharpFloatMobile {
+    0%,100% { transform:translate3d(0,0,0) !important; }
+    50% { transform:translate3d(0,-2px,0) !important; }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .agentImage { animation:none !important; transform:none !important; }
+}

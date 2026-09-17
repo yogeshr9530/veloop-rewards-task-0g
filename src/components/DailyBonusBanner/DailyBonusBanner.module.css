@@ -1152,3 +1152,38 @@
   .summaryStreak { padding-inline: 6px !important; }
   .summaryStreak .days span { width: 14px !important; height: 14px !important; }
 }
+
+/* =========================================================
+   REVIEWER ANIMATION PASS — clearer gift movement and reward-card emphasis.
+   All mobile elements stay in their own layout cells.
+   ========================================================= */
+.giftImage {
+  animation:dailySharpGift 2.7s cubic-bezier(.45,0,.25,1) infinite !important;
+  will-change:transform,filter;
+}
+.summaryToday,
+.summaryStreak {
+  animation:dailySharpCard 3.15s ease-in-out infinite !important;
+  will-change:box-shadow;
+}
+.summaryStreak { animation-delay:.35s !important; }
+@keyframes dailySharpGift {
+  0%,100% { transform:translate3d(0,0,0) scale(1); filter:saturate(.98) contrast(1.03) drop-shadow(0 20px 30px rgba(0,0,0,.34)); }
+  48% { transform:translate3d(0,-3px,0) scale(1.008); filter:saturate(1.04) contrast(1.04) drop-shadow(0 24px 34px rgba(0,0,0,.39)); }
+  64% { transform:translate3d(0,-2px,0) scale(1.005); }
+}
+@keyframes dailySharpCard {
+  0%,100% { box-shadow:0 13px 28px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.03); }
+  50% { box-shadow:0 16px 32px rgba(0,0,0,.24),0 0 17px rgba(255,176,44,.12),inset 0 1px 0 rgba(255,255,255,.04); }
+}
+@media (max-width:600px) {
+  .giftImage { animation:dailySharpGiftMobile 2.95s cubic-bezier(.45,0,.25,1) infinite !important; }
+  .summaryToday,.summaryStreak { animation:dailySharpCard 3.3s ease-in-out infinite !important; transform:none !important; }
+  @keyframes dailySharpGiftMobile {
+    0%,100% { transform:translate3d(0,0,0) scale(1); }
+    50% { transform:translate3d(0,-2px,0) scale(1.004); }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .giftImage,.summaryToday,.summaryStreak { animation:none !important; transform:none !important; }
+}

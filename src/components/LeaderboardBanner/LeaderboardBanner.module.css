@@ -820,3 +820,40 @@
   .prize { min-height: 28px !important; padding-inline: 8px !important; font-size: .61rem !important; }
   .cta { min-height: 40px !important; }
 }
+
+/* =========================================================
+   REVIEWER ANIMATION PASS — crisper, clearly perceptible motion.
+   Keep the trophy artwork stable; animate rank information only.
+   ========================================================= */
+.floatBadge {
+  animation: leaderSharpBadge 2.35s cubic-bezier(.45,0,.25,1) infinite !important;
+  will-change: transform;
+}
+.floatCopy {
+  animation: leaderSharpCopy 2.35s cubic-bezier(.45,0,.25,1) infinite !important;
+  will-change: transform;
+}
+.sparkles i {
+  animation: leaderSharpTwinkle 2.15s ease-in-out infinite !important;
+}
+@keyframes leaderSharpBadge {
+  0%,100% { transform: translate(-50%,-50%) translate3d(0,0,0); }
+  45% { transform: translate(-50%,-50%) translate3d(0,-3px,0); }
+  62% { transform: translate(-50%,-50%) translate3d(0,-2.2px,0); }
+}
+@keyframes leaderSharpCopy {
+  0%,100% { transform: translateX(-50%) translate3d(0,0,0); }
+  45% { transform: translateX(-50%) translate3d(0,-3.4px,0); }
+  62% { transform: translateX(-50%) translate3d(0,-2.4px,0); }
+}
+@keyframes leaderSharpTwinkle {
+  0%,100% { opacity:.36; transform:scale(.88); }
+  50% { opacity:.95; transform:scale(1.14); }
+}
+@media (max-width:600px) {
+  .floatBadge { animation-duration:2.55s !important; }
+  .floatCopy { animation-duration:2.55s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .floatBadge,.floatCopy,.sparkles i { animation:none !important; }
+}

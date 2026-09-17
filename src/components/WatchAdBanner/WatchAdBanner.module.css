@@ -551,3 +551,31 @@
   .cta { min-height: 40px !important; }
   .rewardToast { top: 5% !important; right: 2.5% !important; }
 }
+
+/* =========================================================
+   REVIEWER ANIMATION PASS — stronger coin lift + clearer play pulse.
+   Motion stays attached to the artwork and remains contained.
+   ========================================================= */
+.veCoin {
+  animation: watchSharpCoin 2.35s cubic-bezier(.45,0,.25,1) infinite !important;
+  will-change: transform;
+}
+.playHotspot::after {
+  animation: watchSharpPlay 2.0s ease-in-out infinite !important;
+}
+@keyframes watchSharpCoin {
+  0%,100% { transform:translate(-50%,-50%) translate3d(0,0,0) rotate(var(--coin-rotate)) scale(1); }
+  45% { transform:translate(-50%,-50%) translate3d(0,-3.2px,0) rotate(var(--coin-rotate)) scale(1.025); }
+  62% { transform:translate(-50%,-50%) translate3d(0,-2px,0) rotate(var(--coin-rotate)) scale(1.015); }
+}
+@keyframes watchSharpPlay {
+  0%,100% { transform:scale(.94); opacity:.18; }
+  50% { transform:scale(1.10); opacity:.66; }
+}
+@media (max-width:600px) {
+  .veCoin { animation-duration:2.55s !important; }
+  .playHotspot::after { animation-duration:2.2s !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .veCoin,.playHotspot::after { animation:none !important; }
+}
