@@ -514,3 +514,40 @@
   .content { padding:8px 15px 11px !important; gap:5px !important; }
   .rewardToast { top:6% !important; right:3% !important; }
 }
+
+/* =========================================================
+   REVIEWER MOBILE WIDTH FIX — full-width reward illustration.
+   ========================================================= */
+@media (max-width: 600px) {
+  .visual,
+  .visualStage,
+  .visualImage {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .visual { padding-inline: 0 !important; }
+  .visualStage { margin-inline: 0 !important; }
+  .visualImage { object-fit: contain !important; object-position: center !important; }
+}
+
+@media (max-width: 430px) {
+  .banner {
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+    grid-template-rows: 75vw 1fr !important;
+  }
+  .visual { height: auto !important; min-height: 0 !important; overflow: hidden !important; }
+  .visualStage { height: 100% !important; aspect-ratio: 4 / 3 !important; }
+  .visualImage { height: 100% !important; }
+  .content { padding: 5px 13px 8px !important; gap: 3px !important; }
+  .index { width: 30px !important; height: 30px !important; font-size: .68rem !important; }
+  .stage { min-height: 30px !important; padding-inline: 9px !important; font-size: .6rem !important; }
+  .banner h2 { font-size: clamp(1.5rem, 7.2vw, 1.82rem) !important; line-height: .98 !important; }
+  .content > p { font-size: .73rem !important; line-height: 1.28 !important; }
+  .badges { gap: 4px !important; }
+  .badges span { min-height: 29px !important; font-size: .6rem !important; }
+  .cta { min-height: 40px !important; }
+  .rewardToast { top: 5% !important; right: 2.5% !important; }
+}

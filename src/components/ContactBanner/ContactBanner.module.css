@@ -608,3 +608,52 @@
     transform: translateY(-2px) !important;
   }
 }
+
+/* =========================================================
+   REVIEWER MOBILE WIDTH FIX — contact art fits the phone width.
+   A true 4:3 row matches the source artwork, removing the lower
+   edge overlap/crop while keeping the image edge-to-edge.
+   ========================================================= */
+@media (max-width: 600px) {
+  .visual,
+  .agentWrap,
+  .agentImage {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .visual { padding-inline: 0 !important; }
+  .agentWrap { margin-inline: 0 !important; padding-inline: 0 !important; }
+  .agentImage { object-fit: contain !important; object-position: center !important; }
+}
+
+@media (max-width: 430px) {
+  .banner {
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+    grid-template-rows: 75vw 1fr !important;
+  }
+  .visual {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .agentWrap {
+    height: 100% !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 3 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .agentImage { height: 100% !important; transform: none !important; }
+  .content { padding: 5px 13px 9px !important; gap: 4px !important; }
+  .index { width: 30px !important; height: 30px !important; font-size: .68rem !important; }
+  .stage { min-height: 30px !important; padding-inline: 9px !important; font-size: .62rem !important; }
+  .banner h2 { font-size: clamp(1.52rem, 7.4vw, 1.86rem) !important; line-height: .98 !important; }
+  .content > p { font-size: .74rem !important; line-height: 1.3 !important; }
+  .cta { min-height: 42px !important; }
+}

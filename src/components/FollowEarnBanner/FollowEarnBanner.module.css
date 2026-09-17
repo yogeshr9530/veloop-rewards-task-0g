@@ -796,3 +796,199 @@
   .phoneImage { height: 190px !important; }
   .content { flex-basis: 234px !important; }
 }
+
+/* =========================================================
+   REVIEWER MOBILE WIDTH FIX — social illustration spans the
+   available phone width; the reward example stays below it.
+   ========================================================= */
+@media (max-width: 600px) {
+  .phoneWrap,
+  .phoneImage {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .phoneWrap { margin-inline: 0 !important; padding-inline: 0 !important; }
+  .phoneImage { object-fit: contain !important; object-position: center !important; }
+}
+
+@media (max-width: 430px) {
+  .banner {
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .visual { display: contents !important; }
+  .phoneWrap {
+    order: 1 !important;
+    flex: 0 0 75vw !important;
+    height: 75vw !important;
+    min-height: 0 !important;
+    max-height: 322px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .phoneImage { height: 100% !important; margin: 0 !important; transform: none !important; }
+  .content {
+    order: 2 !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    padding: 4px 13px 5px !important;
+    gap: 3px !important;
+  }
+  .index { width: 29px !important; height: 29px !important; font-size: .66rem !important; }
+  .stage { min-height: 29px !important; padding-inline: 8px !important; font-size: .59rem !important; }
+  .banner h2 { font-size: clamp(1.42rem, 6.8vw, 1.72rem) !important; line-height: .98 !important; }
+  .content > p { font-size: .70rem !important; line-height: 1.24 !important; }
+  .cta { min-height: 38px !important; }
+  .rewardCard {
+    order: 3 !important;
+    flex: 0 0 48px !important;
+    width: calc(100% - 26px) !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 0 13px 7px !important;
+    padding: 5px 10px !important;
+    grid-template-columns: 30px 1fr !important;
+    column-gap: 7px !important;
+  }
+  .giftIcon { width: 28px !important; height: 28px !important; }
+  .rewardCard strong { font-size: .96rem !important; }
+  .rewardCard small { font-size: .52rem !important; }
+}
+
+/* =========================================================
+   FINAL MOBILE COMPOSITION FIX — section 04
+   Keep artwork, copy, CTA and reward example in separate flow zones.
+   Nothing overlaps and no content is removed.
+   ========================================================= */
+@media (max-width: 600px) {
+  .banner {
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .visual { display: contents !important; }
+
+  .phoneWrap {
+    order: 1 !important;
+    flex: 0 0 248px !important;
+    width: 100% !important;
+    height: 248px !important;
+    min-height: 248px !important;
+    padding: 0 6px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .phoneWrap::after {
+    inset: 12% 6% 4% !important;
+    animation: none !important;
+  }
+
+  .phoneImage {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+
+  .content {
+    order: 2 !important;
+    flex: 0 0 196px !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 7px 14px 7px !important;
+    border-top: 0 !important;
+  }
+
+  .kicker { gap: 7px !important; margin: 0 !important; font-size: .58rem !important; }
+  .index { width: 30px !important; height: 30px !important; font-size: .68rem !important; }
+  .stage { min-height: 29px !important; padding-inline: 8px !important; font-size: .58rem !important; }
+  .banner h2 { margin: 0 !important; font-size: clamp(1.48rem, 7vw, 1.78rem) !important; line-height: 1 !important; }
+  .content > p { margin: 0 !important; font-size: .71rem !important; line-height: 1.3 !important; }
+  .cta { width: 100% !important; min-height: 40px !important; margin-top: 2px !important; font-size: .82rem !important; }
+
+  .rewardCard {
+    order: 3 !important;
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 68px !important;
+    width: calc(100% - 24px) !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    margin: 0 12px 8px !important;
+    padding: 7px 10px !important;
+    display: grid !important;
+    grid-template-columns: 34px minmax(0,1fr) auto !important;
+    grid-template-rows: 1fr 1fr !important;
+    column-gap: 8px !important;
+    row-gap: 1px !important;
+    align-items: center !important;
+    border-radius: 12px !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .rewardIntro { display: contents !important; }
+  .giftIcon {
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .rewardIntro p {
+    display: block !important;
+    grid-column: 2 !important;
+    grid-row: 1 / 3 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    font-size: .54rem !important;
+    line-height: 1.24 !important;
+  }
+  .divider { display: none !important; }
+  .rewardCard strong {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    align-self: end !important;
+    font-size: .96rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+  .rewardCard small {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+    align-self: start !important;
+    margin: 2px 0 0 !important;
+    font-size: .50rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .phoneWrap { flex-basis: 238px !important; height: 238px !important; min-height: 238px !important; }
+  .content { flex-basis: 206px !important; padding-inline: 12px !important; }
+  .rewardCard { width: calc(100% - 20px) !important; margin-inline: 10px !important; }
+  .rewardIntro p { font-size: .51rem !important; }
+  .rewardCard strong { font-size: .92rem !important; }
+}
